@@ -17,7 +17,7 @@ import javax.servlet.jsp.tagext.BodyTagSupport;{\n}
 import {database.package}.counter.{table.javaClassName}Counter;{\n}
 import {database.package}.model.util.Constants;{\n}
 {\n}
-import synapticloop.h2zero.base.taglib.BaseVarTag;{\n}{\n}
+import synapticloop.h2zero.extension.taglib.BaseVarTag;{\n}{\n}
 
 @SuppressWarnings("serial"){\n}
 public class CountAllTag extends BaseVarTag {{{\n}

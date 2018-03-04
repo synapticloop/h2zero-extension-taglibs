@@ -1,4 +1,4 @@
-package synapticloop.h2zero.extension.routemaster;
+package synapticloop.h2zero.extension;
 
 /*
  * Copyright (c) 2018 synapticloop.
@@ -79,7 +79,7 @@ public class TaglibExtension extends Extension {
 		while (tableIterator.hasNext()) {
 			Table table = tableIterator.next();
 			templarContext.add("table", table);
-			SimpleLogger.logInfo(LoggerType.GENERATE_TAGLIB, "Generating for table '" + table.getName() + "'.");
+			logInfo("Generating for table '" + table.getName() + "'.");
 
 			List<Finder> finders = table.getFinders();
 			Iterator<Finder> finderIterator = finders.iterator();

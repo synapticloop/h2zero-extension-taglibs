@@ -1,8 +1,15 @@
 {
 "options": {
 	"database": "mysql",
+
 	"metrics": false,
-	"generators": [ "java", "sql", "taglib", "reports" ],
+
+	"generators": [ "java", "sql" ],
+
+	"extensions": [
+		"synapticloop.h2zero.extension.TaglibExtension"
+	],
+
 	"validators": {
 		"UpdaterNameValidator": {
 			"allowablePrefixes": "reset,"
@@ -11,12 +18,14 @@
 			"allowablePrefixes": "find,calculate"
 		}
 	},
+
 	"output": {
 		"java": "src/test/java/",
 		"sql": "src/test/resources/",
 		"webapp": "src/test/resources/"
 	}
 },
+
 "database": {
 	"schema": "sample",
 	"package": "synapticloop.sample.h2zero.mysql",
