@@ -117,7 +117,7 @@ public class TaglibExtension extends Extension {
 			String pathname = outFile.getAbsolutePath() + options.getOutputJava() + database.getPackagePath() + "/taglib/" + table.getJavaFieldName() + "/" + "FindByPrimaryKeyTag.java";
 			renderToFile(templarContext, javaCreateTaglibFinderFindByPrimaryKeyParser, pathname, verbose);
 
-			pathname = outFile.getAbsolutePath() + options.getOutputJava() + database.getPackagePath() + "/taglib/" + table.getJavaFieldName() + "/" + "FindAllTag.java";
+			pathname = outFile.getAbsolutePath() + options.getOutputJava() + database.getPackagePath() + "/taglib/" + table.getJavaFieldName() + "/FindAllTag.java";
 			renderToFile(templarContext, javaCreateTaglibFinderFindAllParser, pathname, verbose);
 
 			pathname = outFile.getAbsolutePath() + options.getOutputJava() + database.getPackagePath() + "/taglib/" + table.getJavaFieldName() + "/CountAllTag.java";
@@ -142,6 +142,13 @@ public class TaglibExtension extends Extension {
 
 				String pathname = outFile.getAbsolutePath() + options.getOutputJava() + database.getPackagePath() + "/taglib/" + view.getJavaFieldName() + "/" + finder.getTagName() + "Tag.java";
 				renderToFile(templarContext, javaCreateTaglibFinderParser, pathname, verbose);
+
+				pathname = outFile.getAbsolutePath() + options.getOutputJava() + database.getPackagePath() + "/taglib/" + view.getJavaFieldName() + "/FindAllTag.java";
+				renderToFile(templarContext, javaCreateTaglibFinderFindAllParser, pathname, verbose);
+
+				pathname = outFile.getAbsolutePath() + options.getOutputJava() + database.getPackagePath() + "/taglib/" + view.getJavaFieldName() + "/CountAllTag.java";
+				renderToFile(templarContext, javaCreateTaglibCounterCountAllParser, pathname, verbose);
+
 			}
 		}
 
