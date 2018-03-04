@@ -301,4 +301,290 @@
 	{\n}{\n}
 {endloop}
 
+{loop database.views as view}
+	{\t}<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -{\n}
+	{\n}
+	{\t}  The tag library definitions for the {view.name} table{\n}
+	{\n}
+	{\t}  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->{\n}
+
+	{\t}<tag>{\n}
+	{\t}{\t}<description>{\n}
+	{\t}{\t}{\t}This is an in-built tag for the find by primary key method on the {view.name} table{\n}
+	{\t}{\t}</description>{\n}
+	{\t}{\t}<name>{view.javaClassName}FindByPrimaryKey</name>{\n}
+	{\t}{\t}<tag-class>{database.package}.taglib.{view.javaFieldName}.FindByPrimaryKeyTag</tag-class>{\n}
+	{\t}{\t}<body-content>JSP</body-content>{\n}
+
+	{\t}{\t}<attribute>{\n}
+	{\t}{\t}{\t}<description>{\n}
+	{\t}{\t}{\t}{\t}The variable to bind the results to{\n}
+	{\t}{\t}{\t}</description>{\n}
+	{\t}{\t}{\t}<name>var</name>{\n}
+	{\t}{\t}{\t}<required>true</required>{\n}
+	{\t}{\t}{\t}<rtexprvalue>false</rtexprvalue>{\n}
+	{\t}{\t}</attribute>{\n}
+
+	{\t}{\t}<attribute>{\n}
+	{\t}{\t}{\t}<description>{\n}
+	{\t}{\t}{\t}{\t}The primary key{\n}
+	{\t}{\t}{\t}</description>{\n}
+	{\t}{\t}{\t}<name>primaryKey</name>{\n}
+	{\t}{\t}{\t}<required>true</required>{\n}
+	{\t}{\t}{\t}<rtexprvalue>true</rtexprvalue>{\n}
+	{\t}{\t}</attribute>{\n}
+
+	{\t}{\t}<attribute>{\n}
+	{\t}{\t}{\t}<description>{\n}
+	{\t}{\t}{\t}{\t}Whether to remove the var at the end of the tag{\n}
+	{\t}{\t}{\t}</description>{\n}
+	{\t}{\t}{\t}<name>removeVar</name>{\n}
+	{\t}{\t}{\t}<required>false</required>{\n}
+	{\t}{\t}{\t}<rtexprvalue>false</rtexprvalue>{\n}
+	{\t}{\t}</attribute>{\n}
+
+	{\t}</tag>{\n}{\n}
+
+	{\t}<tag>{\n}
+	{\t}{\t}<description>{\n}
+	{\t}{\t}{\t}generated tag for the find all{\n}
+	{\t}{\t}</description>{\n}
+	{\t}{\t}<name>{view.javaClassName}FindAll</name>{\n}
+	{\t}{\t}<tag-class>{database.package}.taglib.{view.javaFieldName}.FindAllTag</tag-class>{\n}
+	{\t}{\t}<body-content>JSP</body-content>{\n}
+
+	{\t}{\t}<attribute>{\n}
+	{\t}{\t}{\t}<description>{\n}
+	{\t}{\t}{\t}{\t}The variable to bind the results to{\n}
+	{\t}{\t}{\t}</description>{\n}
+	{\t}{\t}{\t}<name>var</name>{\n}
+	{\t}{\t}{\t}<required>true</required>{\n}
+	{\t}{\t}{\t}<rtexprvalue>false</rtexprvalue>{\n}
+	{\t}{\t}</attribute>{\n}
+
+	{\t}{\t}<attribute>{\n}
+	{\t}{\t}{\t}<description>{\n}
+	{\t}{\t}{\t}{\t}Whether to remove the var at the end of the tag{\n}
+	{\t}{\t}{\t}</description>{\n}
+	{\t}{\t}{\t}<name>removeVar</name>{\n}
+	{\t}{\t}{\t}<required>false</required>{\n}
+	{\t}{\t}{\t}<rtexprvalue>false</rtexprvalue>{\n}
+	{\t}{\t}</attribute>{\n}
+
+	{\t}</tag>{\n}{\n}
+
+	{loop view.finders as finder}
+		{if finderStatus.first}
+			{\t}<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -{\n}
+			{\n}
+			{\t}  Generated finder tags for the {view.name} table{\n}
+			{\n}
+			{\t}  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->{\n}
+		{endif}
+
+		{\t}<tag>{\n}
+		{\t}{\t}<description>{\n}
+		{\t}{\t}{\t}Automatically generated tag that maps to the {finder.name} finder{\n}
+		{loop finder.comments as comment}
+			{if commentStatus.first}
+				{\n}
+				{\t}{\t}{\t}User generated comments{\n}
+				{\n}
+			{endif}
+			{\t}{\t}{\t}{comment}{\n}
+		{endloop}
+
+		{\t}{\t}</description>{\n}
+		{\t}{\t}<name>{view.javaClassName}{finder.tagName}</name>{\n}
+		{\t}{\t}<tag-class>{database.package}.taglib.{view.javaFieldName}.{finder.tagName}Tag</tag-class>{\n}
+		{\t}{\t}<body-content>JSP</body-content>{\n}
+
+		{\t}{\t}<attribute>{\n}
+		{\t}{\t}{\t}<description>{\n}
+		{\t}{\t}{\t}{\t}The variable to bind the results to{\n}
+		{\t}{\t}{\t}</description>{\n}
+		{\t}{\t}{\t}<name>var</name>{\n}
+		{\t}{\t}{\t}<required>true</required>{\n}
+		{\t}{\t}{\t}<rtexprvalue>false</rtexprvalue>{\n}
+		{\t}{\t}</attribute>{\n}
+
+
+		{loop finder.whereFields as whereField}
+			{\t}{\t}<attribute>{\n}
+			{\t}{\t}{\t}<description>{\n}
+			{\t}{\t}{\t}{\t}Bind the {whereField.javaName} variable{\n}
+			{\t}{\t}{\t}</description>{\n}
+			{\t}{\t}{\t}<name>{whereField.javaName}</name>{\n}
+			{\t}{\t}{\t}<required>true</required>{\n}
+			{\t}{\t}{\t}<rtexprvalue>true</rtexprvalue>{\n}
+			{\t}{\t}</attribute>{\n}
+		{endloop}
+
+		{\t}{\t}<attribute>{\n}
+		{\t}{\t}{\t}<description>{\n}
+		{\t}{\t}{\t}{\t}Whether to remove the var at the end of the tag{\n}
+		{\t}{\t}{\t}</description>{\n}
+		{\t}{\t}{\t}<name>removeVar</name>{\n}
+		{\t}{\t}{\t}<required>false</required>{\n}
+		{\t}{\t}{\t}<rtexprvalue>false</rtexprvalue>{\n}
+		{\t}{\t}</attribute>{\n}
+
+		{\t}</tag>{\n}
+		{\n}
+	{endloop}
+
+
+	{\t}<tag>{\n}
+	{\t}{\t}<description>{\n}
+	{\t}{\t}{\t}This is an in-built tag for the countAll function for the {view.name} table{\n}
+	{\t}{\t}</description>{\n}
+	{\t}{\t}<name>{view.javaClassName}CountAll</name>{\n}
+	{\t}{\t}<tag-class>{database.package}.taglib.{view.javaFieldName}.CountAllTag</tag-class>{\n}
+	{\t}{\t}<body-content>JSP</body-content>{\n}
+
+	{\t}{\t}<attribute>{\n}
+	{\t}{\t}{\t}<description>{\n}
+	{\t}{\t}{\t}{\t}The variable to bind the results to{\n}
+	{\t}{\t}{\t}</description>{\n}
+	{\t}{\t}{\t}<name>var</name>{\n}
+	{\t}{\t}{\t}<required>true</required>{\n}
+	{\t}{\t}{\t}<rtexprvalue>false</rtexprvalue>{\n}
+	{\t}{\t}</attribute>{\n}
+
+	{\t}{\t}<attribute>{\n}
+	{\t}{\t}{\t}<description>{\n}
+	{\t}{\t}{\t}{\t}Whether to remove the var at the end of the tag{\n}
+	{\t}{\t}{\t}</description>{\n}
+	{\t}{\t}{\t}<name>removeVar</name>{\n}
+	{\t}{\t}{\t}<required>false</required>{\n}
+	{\t}{\t}{\t}<rtexprvalue>false</rtexprvalue>{\n}
+	{\t}{\t}</attribute>{\n}
+
+	{\t}</tag>{\n}{\n}
+
+	{loop view.counters as counter}
+		{if counterStatus.first}
+			{\t}<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -{\n}
+			{\n}
+			{\t}  Generated counter tags for the {view.name} table{\n}
+			{\n}
+			{\t}  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->{\n}
+		{endif}
+
+		{\t}<tag>{\n}
+		{\t}{\t}<description>{\n}
+		{\t}{\t}{\t}counter tag generated tag for the {counter.name}{\n}
+
+		{loop counter.comments as comment}
+			{if commentStatus.first}
+				{\n}
+				{\t}{\t}{\t}User generated comments{\n}
+				{\n}
+			{endif}
+			{\t}{\t}{\t}{comment}{\n}
+		{endloop}
+
+		{\t}{\t}</description>{\n}
+		{\t}{\t}<name>{view.javaClassName}{counter.tagName}</name>{\n}
+		{\t}{\t}<tag-class>{database.package}.taglib.{view.javaFieldName}.{counter.tagName}Tag</tag-class>{\n}
+		{\t}{\t}<body-content>JSP</body-content>{\n}
+
+		{\t}{\t}<attribute>{\n}
+		{\t}{\t}{\t}<description>{\n}
+		{\t}{\t}{\t}{\t}The variable to bind the results to{\n}
+		{\t}{\t}{\t}</description>{\n}
+		{\t}{\t}{\t}<name>var</name>{\n}
+		{\t}{\t}{\t}<required>true</required>{\n}
+		{\t}{\t}{\t}<rtexprvalue>false</rtexprvalue>{\n}
+		{\t}{\t}</attribute>{\n}
+
+
+		{loop counter.whereFields as whereField}
+			{\t}{\t}<attribute>{\n}
+			{\t}{\t}{\t}<description>{\n}
+			{\t}{\t}{\t}{\t}Bind the {whereField.javaName} variable{\n}
+			{\t}{\t}{\t}</description>{\n}
+			{\t}{\t}{\t}<name>{whereField.javaName}</name>{\n}
+			{\t}{\t}{\t}<required>true</required>{\n}
+			{\t}{\t}{\t}<rtexprvalue>true</rtexprvalue>{\n}
+			{\t}{\t}</attribute>{\n}
+		{endloop}
+
+		{\t}{\t}<attribute>{\n}
+		{\t}{\t}{\t}<description>{\n}
+		{\t}{\t}{\t}{\t}Whether to remove the var at the end of the tag{\n}
+		{\t}{\t}{\t}</description>{\n}
+		{\t}{\t}{\t}<name>removeVar</name>{\n}
+		{\t}{\t}{\t}<required>false</required>{\n}
+		{\t}{\t}{\t}<rtexprvalue>false</rtexprvalue>{\n}
+		{\t}{\t}</attribute>{\n}
+
+		{\t}</tag>{\n}
+		{\n}
+	{endloop}
+
+
+	{loop view.questions as question}
+		{if questionStatus.first}
+			{\t}<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -{\n}
+			{\n}
+			{\t}  Generated question tags for the {view.name} table{\n}
+			{\n}
+			{\t}  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->{\n}
+		{endif}
+
+		{\t}<tag>{\n}
+		{\t}{\t}<description>{\n}
+		{\t}{\t}{\t}generated tag for the {question.name}{\n}
+
+		{loop question.comments as comment}
+			{if commentStatus.first}
+				{\n}
+				{\t}{\t}{\t}User generated comments{\n}
+				{\n}
+			{endif}
+			{\t}{\t}{\t}{comment}{\n}
+		{endloop}
+
+		{\t}{\t}</description>{\n}
+		{\t}{\t}<name>{view.javaClassName}{question.tagName}</name>{\n}
+		{\t}{\t}<tag-class>{database.package}.taglib.{view.javaFieldName}.{question.tagName}Tag</tag-class>{\n}
+		{\t}{\t}<body-content>JSP</body-content>{\n}
+
+		{\t}{\t}<attribute>{\n}
+		{\t}{\t}{\t}<description>{\n}
+		{\t}{\t}{\t}{\t}The variable to bind the results to{\n}
+		{\t}{\t}{\t}</description>{\n}
+		{\t}{\t}{\t}<name>var</name>{\n}
+		{\t}{\t}{\t}<required>true</required>{\n}
+		{\t}{\t}{\t}<rtexprvalue>false</rtexprvalue>{\n}
+		{\t}{\t}</attribute>{\n}
+
+
+		{loop question.whereFields as whereField}
+			{\t}{\t}<attribute>{\n}
+			{\t}{\t}{\t}<description>{\n}
+			{\t}{\t}{\t}{\t}Bind the {whereField.javaName} variable{\n}
+			{\t}{\t}{\t}</description>{\n}
+			{\t}{\t}{\t}<name>{whereField.javaName}</name>{\n}
+			{\t}{\t}{\t}<required>true</required>{\n}
+			{\t}{\t}{\t}<rtexprvalue>true</rtexprvalue>{\n}
+			{\t}{\t}</attribute>{\n}
+		{endloop}
+
+		{\t}{\t}<attribute>{\n}
+		{\t}{\t}{\t}<description>{\n}
+		{\t}{\t}{\t}{\t}Whether to remove the var at the end of the tag{\n}
+		{\t}{\t}{\t}</description>{\n}
+		{\t}{\t}{\t}<name>removeVar</name>{\n}
+		{\t}{\t}{\t}<required>false</required>{\n}
+		{\t}{\t}{\t}<rtexprvalue>false</rtexprvalue>{\n}
+		{\t}{\t}</attribute>{\n}
+
+		{\t}</tag>{\n}
+		{\n}
+	{endloop}
+	{\n}{\n}
+{endloop}
+
 </taglib>{\n}
