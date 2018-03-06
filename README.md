@@ -177,14 +177,16 @@ You will also need to download the following dependencies:
 
 ### compile dependencies
 
-  - `synapticloop:h2zero:2.2.1`: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/h2zero/2.2.1/view#files/synapticloop/h2zero/2.2.1) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|h2zero|2.2.1|jar))
-  - `synapticloop:routemaster:2.3.0`: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/routemaster/2.3.0/view#files/synapticloop/routemaster/2.3.0) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|routemaster|2.3.0|jar))
+  - `synapticloop:h2zero:3.1.0`: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/h2zero/3.1.0/view#files/synapticloop/h2zero/3.1.0) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|h2zero|3.1.0|jar))
+  - `javax.servlet.jsp:jsp-api:2.2`: (It may be available on one of: [bintray](https://bintray.com/javax.servlet.jsp/maven/jsp-api/2.2/view#files/javax.servlet.jsp/jsp-api/2.2) [mvn central](http://search.maven.org/#artifactdetails|javax.servlet.jsp|jsp-api|2.2|jar))
+  - `javax.servlet:javax.servlet-api:3.1.0`: (It may be available on one of: [bintray](https://bintray.com/javax.servlet/maven/javax.servlet-api/3.1.0/view#files/javax.servlet/javax.servlet-api/3.1.0) [mvn central](http://search.maven.org/#artifactdetails|javax.servlet|javax.servlet-api|3.1.0|jar))
 
 
 ### runtime dependencies
 
-  - `synapticloop:h2zero:2.2.1`: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/h2zero/2.2.1/view#files/synapticloop/h2zero/2.2.1) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|h2zero|2.2.1|jar))
-  - `synapticloop:routemaster:2.3.0`: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/routemaster/2.3.0/view#files/synapticloop/routemaster/2.3.0) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|routemaster|2.3.0|jar))
+  - `synapticloop:h2zero:3.1.0`: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/h2zero/3.1.0/view#files/synapticloop/h2zero/3.1.0) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|h2zero|3.1.0|jar))
+  - `javax.servlet.jsp:jsp-api:2.2`: (It may be available on one of: [bintray](https://bintray.com/javax.servlet.jsp/maven/jsp-api/2.2/view#files/javax.servlet.jsp/jsp-api/2.2) [mvn central](http://search.maven.org/#artifactdetails|javax.servlet.jsp|jsp-api|2.2|jar))
+  - `javax.servlet:javax.servlet-api:3.1.0`: (It may be available on one of: [bintray](https://bintray.com/javax.servlet/maven/javax.servlet-api/3.1.0/view#files/javax.servlet/javax.servlet-api/3.1.0) [mvn central](http://search.maven.org/#artifactdetails|javax.servlet|javax.servlet-api|3.1.0|jar))
 
 
 ### testCompile dependencies
