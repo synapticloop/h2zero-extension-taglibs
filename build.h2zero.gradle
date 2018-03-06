@@ -16,9 +16,8 @@ buildscript {
 plugins {
 	id 'java'
 	id 'eclipse'
+	id 'synapticloop.h2zero' version '3.0.0'
 }
-
-apply plugin: 'synapticloop.h2zero'
 
 repositories {
 	mavenLocal()
