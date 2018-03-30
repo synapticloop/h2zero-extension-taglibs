@@ -118,9 +118,9 @@ The `--info` switch will also output logging for the tests
 
 ```
 dependencies {
-	runtime(group: 'synapticloop', name: 'h2zero-extension-taglibs', version: '1.0.0', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'h2zero-extension-taglibs', version: '1.1.1', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'h2zero-extension-taglibs', version: '1.0.0', ext: 'jar')
+	compile(group: 'synapticloop', name: 'h2zero-extension-taglibs', version: '1.1.1', ext: 'jar')
 }
 ```
 
@@ -132,9 +132,9 @@ or, more simply for versions of gradle greater than 2.1
 
 ```
 dependencies {
-	runtime 'synapticloop:h2zero-extension-taglibs:1.0.0'
+	runtime 'synapticloop:h2zero-extension-taglibs:1.1.1'
 
-	compile 'synapticloop:h2zero-extension-taglibs:1.0.0'
+	compile 'synapticloop:h2zero-extension-taglibs:1.1.1'
 }
 ```
 
@@ -152,7 +152,7 @@ dependencies {
 <dependency>
 	<groupId>synapticloop</groupId>
 	<artifactId>h2zero-extension-taglibs</artifactId>
-	<version>1.0.0</version>
+	<version>1.1.1</version>
 	<type>jar</type>
 </dependency>
 ```
@@ -177,14 +177,14 @@ You will also need to download the following dependencies:
 
 ### compile dependencies
 
-  - `synapticloop:h2zero:3.1.0`: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/h2zero/3.1.0/view#files/synapticloop/h2zero/3.1.0) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|h2zero|3.1.0|jar))
+  - `synapticloop:h2zero:3.1.6`: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/h2zero/3.1.6/view#files/synapticloop/h2zero/3.1.6) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|h2zero|3.1.6|jar))
   - `javax.servlet.jsp:jsp-api:2.2`: (It may be available on one of: [bintray](https://bintray.com/javax.servlet.jsp/maven/jsp-api/2.2/view#files/javax.servlet.jsp/jsp-api/2.2) [mvn central](http://search.maven.org/#artifactdetails|javax.servlet.jsp|jsp-api|2.2|jar))
   - `javax.servlet:javax.servlet-api:3.1.0`: (It may be available on one of: [bintray](https://bintray.com/javax.servlet/maven/javax.servlet-api/3.1.0/view#files/javax.servlet/javax.servlet-api/3.1.0) [mvn central](http://search.maven.org/#artifactdetails|javax.servlet|javax.servlet-api|3.1.0|jar))
 
 
 ### runtime dependencies
 
-  - `synapticloop:h2zero:3.1.0`: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/h2zero/3.1.0/view#files/synapticloop/h2zero/3.1.0) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|h2zero|3.1.0|jar))
+  - `synapticloop:h2zero:3.1.6`: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/h2zero/3.1.6/view#files/synapticloop/h2zero/3.1.6) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|h2zero|3.1.6|jar))
   - `javax.servlet.jsp:jsp-api:2.2`: (It may be available on one of: [bintray](https://bintray.com/javax.servlet.jsp/maven/jsp-api/2.2/view#files/javax.servlet.jsp/jsp-api/2.2) [mvn central](http://search.maven.org/#artifactdetails|javax.servlet.jsp|jsp-api|2.2|jar))
   - `javax.servlet:javax.servlet-api:3.1.0`: (It may be available on one of: [bintray](https://bintray.com/javax.servlet/maven/javax.servlet-api/3.1.0/view#files/javax.servlet/javax.servlet-api/3.1.0) [mvn central](http://search.maven.org/#artifactdetails|javax.servlet|javax.servlet-api|3.1.0|jar))
 
