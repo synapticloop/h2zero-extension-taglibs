@@ -15,10 +15,10 @@ plugins {
 	id 'synapticloop.documentr' version '2.9.0'
 }
 
-group = 'synapticloop'
+group = 'com.synapticloop'
 archivesBaseName = 'h2zero-extension-taglibs'
 description = """Taglib extension for h2zero"""
-version = '1.1.1'
+version = '1.2.0'
 
 tasks.withType(Javadoc).all { enabled = false }
 
@@ -126,9 +126,9 @@ publishing {
 			artifact sourcesJar
 			artifact javadocJar
 
-			groupId 'synapticloop'
+			groupId group
 
-			artifactId 'h2zero-extension-taglibs'
+			artifactId archivesBaseName
 
 			pom.withXml {
 				configurations.compile.resolvedConfiguration.firstLevelModuleDependencies.each { dep ->
@@ -157,7 +157,7 @@ bintray {
 }
 
 github {
-	owner = group
+	owner = 'synapticloop'
 	repo = archivesBaseName
 	if(System.getenv('GITHUB_TOKEN')) {
 		token = System.getenv('GITHUB_TOKEN')
