@@ -118,9 +118,9 @@ The `--info` switch will also output logging for the tests
 
 ```
 dependencies {
-	runtime(group: 'com.synapticloop', name: 'h2zero-extension-taglibs', version: '1.1.1', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'h2zero-extension-taglibs', version: '1.3.0', ext: 'jar')
 
-	compile(group: 'com.synapticloop', name: 'h2zero-extension-taglibs', version: '1.1.1', ext: 'jar')
+	compile(group: 'synapticloop', name: 'h2zero-extension-taglibs', version: '1.3.0', ext: 'jar')
 }
 ```
 
@@ -132,9 +132,9 @@ or, more simply for versions of gradle greater than 2.1
 
 ```
 dependencies {
-	runtime 'com.synapticloop:h2zero-extension-taglibs:1.1.1'
+	runtime 'synapticloop:h2zero-extension-taglibs:1.3.0'
 
-	compile 'com.synapticloop:h2zero-extension-taglibs:1.1.1'
+	compile 'synapticloop:h2zero-extension-taglibs:1.3.0'
 }
 ```
 
@@ -150,9 +150,9 @@ dependencies {
 
 ```
 <dependency>
-	<groupId>com.synapticloop</groupId>
+	<groupId>synapticloop</groupId>
 	<artifactId>h2zero-extension-taglibs</artifactId>
-	<version>1.1.1</version>
+	<version>1.3.0</version>
 	<type>jar</type>
 </dependency>
 ```
