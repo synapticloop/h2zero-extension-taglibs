@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -367,7 +368,7 @@ public class UserFinder {
 		}
 
 
-		if(null == results) {
+		if(null == results || results.size() == 0) {
 			throw new H2ZeroFinderException("Could not find result.");
 		}
 		return(results);
@@ -484,7 +485,7 @@ public class UserFinder {
 		}
 
 
-		if(null == results) {
+		if(null == results || results.size() == 0) {
 			throw new H2ZeroFinderException("Could not find result.");
 		}
 		return(results);
@@ -969,7 +970,7 @@ public class UserFinder {
 		}
 
 
-		if(null == results) {
+		if(null == results || results.size() == 0) {
 			throw new H2ZeroFinderException("Could not find result.");
 		}
 		return(results);
@@ -1086,7 +1087,7 @@ public class UserFinder {
 		}
 
 
-		if(null == results) {
+		if(null == results || results.size() == 0) {
 			throw new H2ZeroFinderException("Could not find result.");
 		}
 		return(results);

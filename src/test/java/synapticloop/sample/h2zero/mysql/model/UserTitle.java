@@ -8,35 +8,40 @@ import java.util.HashMap;
 
 import java.util.Map;
 
+
+import org.json.JSONObject;
+
+import synapticloop.h2zero.base.model.ModelBaseHelper;
 import synapticloop.sample.h2zero.mysql.model.util.Constants;
 
 
-public class UserTitle {
+public class UserTitle  {
 	// the binder is unused in code, but will generate compile problems if this 
 	// class is no longer referenced in the h2zero file. Just a nicety for
 	// removing dead code
 	@SuppressWarnings("unused")
 	private static final String BINDER = Constants.USER_TITLE_BINDER;
 
-	public static final UserTitle MR = new UserTitle(new Long(1), "Mr.", new Integer(1));
-	public static final UserTitle MRS = new UserTitle(new Long(2), "Mrs.", new Integer(2));
-	public static final UserTitle MISS = new UserTitle(new Long(3), "Miss", new Integer(3));
-	public static final UserTitle DR = new UserTitle(new Long(4), "Dr.", new Integer(4));
+	public static final UserTitle MR = new UserTitle(Long.valueOf(1), "Mr.", Integer.valueOf(1));
+	public static final UserTitle MRS = new UserTitle(Long.valueOf(2), "Mrs.", Integer.valueOf(2));
+	public static final UserTitle MISS = new UserTitle(Long.valueOf(3), "Miss", Integer.valueOf(3));
+	public static final UserTitle DR = new UserTitle(Long.valueOf(4), "Dr.", Integer.valueOf(4));
 
 	public static final UserTitle[] ALL =  {
 		UserTitle.MR, UserTitle.MRS, UserTitle.MISS, UserTitle.DR
 	};
 
-	public static final Map<Long, UserTitle> ALL_LOOKUP = new HashMap<Long, UserTitle>();
+	public static final Map<Long, UserTitle> ALL_LOOKUP = new HashMap<>();
 	static{
-		ALL_LOOKUP.put(new Long(1), UserTitle.MR);
-		ALL_LOOKUP.put(new Long(2), UserTitle.MRS);
-		ALL_LOOKUP.put(new Long(3), UserTitle.MISS);
-		ALL_LOOKUP.put(new Long(4), UserTitle.DR);
+		ALL_LOOKUP.put(Long.valueOf(1), UserTitle.MR);
+		ALL_LOOKUP.put(Long.valueOf(2), UserTitle.MRS);
+		ALL_LOOKUP.put(Long.valueOf(3), UserTitle.MISS);
+		ALL_LOOKUP.put(Long.valueOf(4), UserTitle.DR);
 
 	};
 
 	public static final String PRIMARY_KEY_FIELD = "id_user_title";
+
 
 
 	private Long idUserTitle = null;
@@ -66,16 +71,24 @@ public class UserTitle {
 		stringBuilder.append("  Field[numOrderBy:" + this.numOrderBy + "]\n");
 		return(stringBuilder.toString());
 	}
+	public JSONObject getToJSON() {
+		return(toJSON());
+	}
+
+	public JSONObject toJSON() {
+		JSONObject jsonObject = new JSONObject();
+
+		jsonObject.put("type", "UserTitle");
+
+		ModelBaseHelper.addtoJSONObject(jsonObject, "idUserTitle", this.getIdUserTitle());
+		ModelBaseHelper.addtoJSONObject(jsonObject, "nmUserTitle", this.getNmUserTitle());
+		ModelBaseHelper.addtoJSONObject(jsonObject, "numOrderBy", this.getNumOrderBy());
+		return(jsonObject);
+	}
+
 
 	public String toJsonString() {
-		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append("{\n");
-		stringBuilder.append("  \"type\": \"UserTitle\",\n");
-		stringBuilder.append("  \"idUserTitle\": " + this.idUserTitle + " , \n");
-		stringBuilder.append("  \"nmUserTitle\": \"" + this.nmUserTitle + "\" , \n");
-		stringBuilder.append("  \"numOrderBy\": " + this.numOrderBy + " \n");
-		stringBuilder.append("}\n");
-		return(stringBuilder.toString());
+		return(toJSON().toString());
 	}
 
 	public String getJsonString() {

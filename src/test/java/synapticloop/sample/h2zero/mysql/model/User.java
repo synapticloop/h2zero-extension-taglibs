@@ -5,16 +5,24 @@ package synapticloop.sample.h2zero.mysql.model;
 //                  (java-create-model.templar)
 
 import synapticloop.h2zero.base.manager.mysql.ConnectionManager;
+import synapticloop.h2zero.base.validator.bean.ValidationBean;
+import synapticloop.h2zero.base.validator.bean.ValidationFieldBean;
+import synapticloop.sample.h2zero.mysql.question.UserTypeQuestion;
+import synapticloop.h2zero.base.validator.*;
 import synapticloop.h2zero.base.model.mysql.ModelBase;
 import synapticloop.h2zero.base.exception.H2ZeroPrimaryKeyException;
 import java.lang.StringBuilder;
 import java.sql.Connection;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import org.json.JSONObject;
+
+import synapticloop.h2zero.base.model.ModelBaseHelper;
 import synapticloop.sample.h2zero.mysql.model.util.Constants;
 
 import synapticloop.sample.h2zero.mysql.finder.UserFinder;
@@ -29,7 +37,7 @@ public class User extends ModelBase {
 
 	public static final String PRIMARY_KEY_FIELD = "id_user";
 
-	private static final String SQL_INSERT = "insert into user values (?, ?, ?, ?, ?, ?, ?, ?)";
+	private static final String SQL_INSERT = "insert into user (id_user_type, fl_is_alive, num_age, nm_username, txt_address_email, txt_password, dtm_signup) values (?, ?, ?, ?, ?, ?, ?)";
 	private static final String SQL_UPDATE = "update user set id_user_type = ?, fl_is_alive = ?, num_age = ?, nm_username = ?, txt_address_email = ?, txt_password = ?, dtm_signup = ? where " + PRIMARY_KEY_FIELD + " = ?";
 	private static final String SQL_DELETE = "delete from user where " + PRIMARY_KEY_FIELD + " = ?";
 	private static final String SQL_ENSURE = "select " + PRIMARY_KEY_FIELD + " from user where id_user_type = ? and fl_is_alive = ? and num_age = ? and nm_username = ? and txt_address_email = ? and txt_password = ? and dtm_signup = ?";
@@ -37,7 +45,6 @@ public class User extends ModelBase {
 
 // Static lookups for fields in the hit counter.
 	public static final int HIT_TOTAL = 0;
-	public static final int HIT_PRIMARY_KEY = 0;
 	public static final int HIT_ID_USER = 1;
 	public static final int HIT_ID_USER_TYPE = 2;
 	public static final int HIT_FL_IS_ALIVE = 3;
@@ -52,6 +59,7 @@ public class User extends ModelBase {
 	private static final String[] HIT_FIELDS = { "TOTAL", "id_user", "id_user_type", "fl_is_alive", "num_age", "nm_username", "txt_address_email", "txt_password", "dtm_signup" };
 	// the number of read-hits for a particular field
 	private static int[] HIT_COUNTS = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+
 
 	private Long idUser = null;
 	private Long idUserType = null;
@@ -97,14 +105,13 @@ public class User extends ModelBase {
 		}
 		// create this bean 
 		PreparedStatement preparedStatement = connection.prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS);
-		ConnectionManager.setBigint(preparedStatement, 1, idUser);
-		ConnectionManager.setBigint(preparedStatement, 2, idUserType);
-		ConnectionManager.setBoolean(preparedStatement, 3, flIsAlive);
-		ConnectionManager.setInt(preparedStatement, 4, numAge);
-		ConnectionManager.setVarchar(preparedStatement, 5, nmUsername);
-		ConnectionManager.setVarchar(preparedStatement, 6, txtAddressEmail);
-		ConnectionManager.setVarchar(preparedStatement, 7, txtPassword);
-		ConnectionManager.setDatetime(preparedStatement, 8, dtmSignup);
+		ConnectionManager.setBigint(preparedStatement, 1, idUserType);
+		ConnectionManager.setBoolean(preparedStatement, 2, flIsAlive);
+		ConnectionManager.setInt(preparedStatement, 3, numAge);
+		ConnectionManager.setVarchar(preparedStatement, 4, nmUsername);
+		ConnectionManager.setVarchar(preparedStatement, 5, txtAddressEmail);
+		ConnectionManager.setVarchar(preparedStatement, 6, txtPassword);
+		ConnectionManager.setDatetime(preparedStatement, 7, dtmSignup);
 		preparedStatement.executeUpdate();
 		ResultSet resultSet = preparedStatement.getGeneratedKeys();
 		if(resultSet.next()) {
@@ -221,6 +228,24 @@ public class User extends ModelBase {
 	public void setDtmSignup(Timestamp dtmSignup) { if(isDifferent(this.dtmSignup, dtmSignup)) { this.dtmSignup = dtmSignup;this.isDirty = true; }}
 
 	@Override
+	public ValidationBean validate() {
+		ValidationBean validationBean = new ValidationBean();
+
+		ValidationFieldBean idUserTypeValidationFieldBean = new BigintValidator("id_user_type", idUserType.toString(), 0, 0, false).validate();
+		idUserTypeValidationFieldBean.setIsIncorrectForeignKey(!UserTypeQuestion.internalDoesPrimaryKeyExist(idUserType));
+		validationBean.addValidationFieldBean(idUserTypeValidationFieldBean);
+
+		validationBean.addValidationFieldBean(new BooleanValidator("fl_is_alive", flIsAlive.toString(), 0, 0, true).validate());
+		validationBean.addValidationFieldBean(new IntValidator("num_age", numAge.toString(), 0, 0, false).validate());
+		validationBean.addValidationFieldBean(new VarcharValidator("nm_username", nmUsername.toString(), 0, 64, false).validate());
+		validationBean.addValidationFieldBean(new VarcharValidator("txt_address_email", txtAddressEmail.toString(), 6, 256, false).validate());
+		validationBean.addValidationFieldBean(new VarcharValidator("txt_password", txtPassword.toString(), 8, 32, false).validate());
+		validationBean.addValidationFieldBean(new DatetimeValidator("dtm_signup", dtmSignup.toString(), 0, 0, true).validate());
+		return(validationBean);
+	}
+
+
+	@Override
 	public String toString() {
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append("Model[User]\n");
@@ -234,24 +259,48 @@ public class User extends ModelBase {
 		stringBuilder.append("  Field[dtmSignup:" + this.dtmSignup + "]\n");
 		return(stringBuilder.toString());
 	}
+	public JSONObject getToJSON() {
+		return(toJSON());
+	}
+
+	public JSONObject toJSON() {
+		JSONObject jsonObject = new JSONObject();
+
+		jsonObject.put("type", "User");
+
+		ModelBaseHelper.addtoJSONObject(jsonObject, "idUser", this.getIdUser());
+		ModelBaseHelper.addtoJSONObject(jsonObject, "idUserType", this.getIdUserType());
+		ModelBaseHelper.addtoJSONObject(jsonObject, "flIsAlive", this.getFlIsAlive());
+		ModelBaseHelper.addtoJSONObject(jsonObject, "numAge", this.getNumAge());
+		ModelBaseHelper.addtoJSONObject(jsonObject, "nmUsername", this.getNmUsername());
+		ModelBaseHelper.addtoJSONObject(jsonObject, "txtAddressEmail", this.getTxtAddressEmail());
+		ModelBaseHelper.addtoJSONObject(jsonObject, "txtPassword", this.getTxtPassword());
+		ModelBaseHelper.addtoJSONObject(jsonObject, "dtmSignup", this.getDtmSignup());
+		return(jsonObject);
+	}
+
 
 	public String toJsonString() {
-		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append("{\n");
-		stringBuilder.append("  \"type\": \"User\",\n");
-		stringBuilder.append("  \"idUser\": " + this.idUser + " , \n");
-		stringBuilder.append("  \"idUserType\": " + this.idUserType + " , \n");
-		stringBuilder.append("  \"flIsAlive\": " + this.flIsAlive + " , \n");
-		stringBuilder.append("  \"numAge\": " + this.numAge + " , \n");
-		stringBuilder.append("  \"nmUsername\": \"" + this.nmUsername + "\" , \n");
-		stringBuilder.append("  \"txtAddressEmail\": \"" + this.txtAddressEmail + "\" , \n");
-		stringBuilder.append("  \"txtPassword\": \"" + this.txtPassword + "\" , \n");
-		stringBuilder.append("  \"dtmSignup\": \"" + this.dtmSignup + "\" \n");
-		stringBuilder.append("}\n");
-		return(stringBuilder.toString());
+		return(toJSON().toString());
 	}
 
 	public String getJsonString() {
 		return(toJsonString());
 	}
+
+	public static String getHitCountJson() {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("type", "User");
+		jsonObject.put("total", HIT_COUNTS[0]);
+		jsonObject.put("idUser", HIT_COUNTS[1]);
+		jsonObject.put("idUserType", HIT_COUNTS[2]);
+		jsonObject.put("flIsAlive", HIT_COUNTS[3]);
+		jsonObject.put("numAge", HIT_COUNTS[4]);
+		jsonObject.put("nmUsername", HIT_COUNTS[5]);
+		jsonObject.put("txtAddressEmail", HIT_COUNTS[6]);
+		jsonObject.put("txtPassword", HIT_COUNTS[7]);
+		jsonObject.put("dtmSignup", HIT_COUNTS[8]);
+		return(jsonObject.toString());
+	}
+
 }

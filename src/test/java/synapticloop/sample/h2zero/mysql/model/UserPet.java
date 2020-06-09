@@ -5,15 +5,24 @@ package synapticloop.sample.h2zero.mysql.model;
 //                  (java-create-model.templar)
 
 import synapticloop.h2zero.base.manager.mysql.ConnectionManager;
+import synapticloop.h2zero.base.validator.bean.ValidationBean;
+import synapticloop.h2zero.base.validator.bean.ValidationFieldBean;
+import synapticloop.sample.h2zero.mysql.question.UserQuestion;
+import synapticloop.sample.h2zero.mysql.question.PetQuestion;
+import synapticloop.h2zero.base.validator.*;
 import synapticloop.h2zero.base.model.mysql.ModelBase;
 import synapticloop.h2zero.base.exception.H2ZeroPrimaryKeyException;
 import java.lang.StringBuilder;
 import java.sql.Connection;
+import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import org.json.JSONObject;
+
+import synapticloop.h2zero.base.model.ModelBaseHelper;
 import synapticloop.sample.h2zero.mysql.model.util.Constants;
 
 import synapticloop.sample.h2zero.mysql.finder.UserPetFinder;
@@ -30,7 +39,7 @@ public class UserPet extends ModelBase {
 
 	public static final String PRIMARY_KEY_FIELD = "id_user_pet";
 
-	private static final String SQL_INSERT = "insert into user_pet values (?, ?, ?)";
+	private static final String SQL_INSERT = "insert into user_pet (id_user, id_pet) values (?, ?)";
 	private static final String SQL_UPDATE = "update user_pet set id_user = ?, id_pet = ? where " + PRIMARY_KEY_FIELD + " = ?";
 	private static final String SQL_DELETE = "delete from user_pet where " + PRIMARY_KEY_FIELD + " = ?";
 	private static final String SQL_ENSURE = "select " + PRIMARY_KEY_FIELD + " from user_pet where id_user = ? and id_pet = ?";
@@ -38,7 +47,6 @@ public class UserPet extends ModelBase {
 
 // Static lookups for fields in the hit counter.
 	public static final int HIT_TOTAL = 0;
-	public static final int HIT_PRIMARY_KEY = 0;
 	public static final int HIT_ID_USER_PET = 1;
 	public static final int HIT_ID_USER = 2;
 	public static final int HIT_ID_PET = 3;
@@ -48,6 +56,7 @@ public class UserPet extends ModelBase {
 	private static final String[] HIT_FIELDS = { "TOTAL", "id_user_pet", "id_user", "id_pet" };
 	// the number of read-hits for a particular field
 	private static int[] HIT_COUNTS = { 0, 0, 0, 0 };
+
 	private User User = null;
 	private Pet Pet = null;
 
@@ -74,9 +83,8 @@ public class UserPet extends ModelBase {
 		}
 		// create this bean 
 		PreparedStatement preparedStatement = connection.prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS);
-		ConnectionManager.setBigint(preparedStatement, 1, idUserPet);
-		ConnectionManager.setBigint(preparedStatement, 2, idUser);
-		ConnectionManager.setBigint(preparedStatement, 3, idPet);
+		ConnectionManager.setBigint(preparedStatement, 1, idUser);
+		ConnectionManager.setBigint(preparedStatement, 2, idPet);
 		preparedStatement.executeUpdate();
 		ResultSet resultSet = preparedStatement.getGeneratedKeys();
 		if(resultSet.next()) {
@@ -180,6 +188,22 @@ public class UserPet extends ModelBase {
 	public void setIdPet(Long idPet) { if(isDifferent(this.idPet, idPet)) { this.idPet = idPet;this.isDirty = true; this.Pet = null;}}
 
 	@Override
+	public ValidationBean validate() {
+		ValidationBean validationBean = new ValidationBean();
+
+		ValidationFieldBean idUserValidationFieldBean = new BigintValidator("id_user", idUser.toString(), 0, 0, false).validate();
+		idUserValidationFieldBean.setIsIncorrectForeignKey(!UserQuestion.internalDoesPrimaryKeyExist(idUser));
+		validationBean.addValidationFieldBean(idUserValidationFieldBean);
+
+		ValidationFieldBean idPetValidationFieldBean = new BigintValidator("id_pet", idPet.toString(), 0, 0, false).validate();
+		idPetValidationFieldBean.setIsIncorrectForeignKey(!PetQuestion.internalDoesPrimaryKeyExist(idPet));
+		validationBean.addValidationFieldBean(idPetValidationFieldBean);
+
+		return(validationBean);
+	}
+
+
+	@Override
 	public String toString() {
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append("Model[UserPet]\n");
@@ -188,19 +212,38 @@ public class UserPet extends ModelBase {
 		stringBuilder.append("  Field[idPet:" + this.idPet + "]\n");
 		return(stringBuilder.toString());
 	}
+	public JSONObject getToJSON() {
+		return(toJSON());
+	}
+
+	public JSONObject toJSON() {
+		JSONObject jsonObject = new JSONObject();
+
+		jsonObject.put("type", "UserPet");
+
+		ModelBaseHelper.addtoJSONObject(jsonObject, "idUserPet", this.getIdUserPet());
+		ModelBaseHelper.addtoJSONObject(jsonObject, "idUser", this.getIdUser());
+		ModelBaseHelper.addtoJSONObject(jsonObject, "idPet", this.getIdPet());
+		return(jsonObject);
+	}
+
 
 	public String toJsonString() {
-		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append("{\n");
-		stringBuilder.append("  \"type\": \"UserPet\",\n");
-		stringBuilder.append("  \"idUserPet\": " + this.idUserPet + " , \n");
-		stringBuilder.append("  \"idUser\": " + this.idUser + " , \n");
-		stringBuilder.append("  \"idPet\": " + this.idPet + " \n");
-		stringBuilder.append("}\n");
-		return(stringBuilder.toString());
+		return(toJSON().toString());
 	}
 
 	public String getJsonString() {
 		return(toJsonString());
 	}
+
+	public static String getHitCountJson() {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("type", "UserPet");
+		jsonObject.put("total", HIT_COUNTS[0]);
+		jsonObject.put("idUserPet", HIT_COUNTS[1]);
+		jsonObject.put("idUser", HIT_COUNTS[2]);
+		jsonObject.put("idPet", HIT_COUNTS[3]);
+		return(jsonObject.toString());
+	}
+
 }

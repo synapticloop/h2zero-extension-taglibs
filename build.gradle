@@ -13,12 +13,13 @@ plugins {
 
 	id 'synapticloop.copyrightr' version '1.3.1'
 	id 'synapticloop.documentr' version '3.0.0'
+	id 'synapticloop.h2zero' version '4.3.0'
 }
 
 group = 'synapticloop'
 archivesBaseName = 'h2zero-extension-taglibs'
 description = """Taglib extension for h2zero"""
-version = '1.3.0'
+version = '4.0.0'
 
 tasks.withType(Javadoc).all { enabled = false }
 
@@ -32,7 +33,7 @@ repositories {
 }
 
 dependencies {
-	compile 'synapticloop:h2zero:4.1.11'
+	compile 'synapticloop:h2zero:4.3.0'
 
 	implementation 'javax.servlet.jsp:jsp-api:2.2'
 	implementation 'javax.servlet:javax.servlet-api:4.0.1'
@@ -135,7 +136,7 @@ bintray {
 }
 
 github {
-	owner = 'synapticloop'
+	owner = group
 	repo = archivesBaseName
 	if(System.getenv('GITHUB_TOKEN')) {
 		token = System.getenv('GITHUB_TOKEN')
@@ -144,6 +145,7 @@ github {
 	name = version
 	assets = [
 		'build/libs/' + archivesBaseName + '-' + version + '.jar',
+		'build/libs/' + archivesBaseName + '-' + version + '-all.jar'
 	]
 }
 

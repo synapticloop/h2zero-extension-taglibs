@@ -5,17 +5,23 @@ package synapticloop.sample.h2zero.mysql.model;
 //                  (java-create-model.templar)
 
 import synapticloop.h2zero.base.manager.mysql.ConnectionManager;
+import synapticloop.h2zero.base.validator.bean.ValidationBean;
+import synapticloop.h2zero.base.validator.*;
 import synapticloop.h2zero.base.model.mysql.ModelBase;
 import synapticloop.h2zero.base.exception.H2ZeroPrimaryKeyException;
 import java.lang.StringBuilder;
 import java.sql.Connection;
 import java.sql.Date;
+import java.math.BigDecimal;
 import java.sql.Blob;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import org.json.JSONObject;
+
+import synapticloop.h2zero.base.model.ModelBaseHelper;
 import synapticloop.sample.h2zero.mysql.model.util.Constants;
 
 import synapticloop.sample.h2zero.mysql.finder.PetFinder;
@@ -30,7 +36,7 @@ public class Pet extends ModelBase {
 
 	public static final String PRIMARY_KEY_FIELD = "id_pet";
 
-	private static final String SQL_INSERT = "insert into pet values (?, ?, ?, ?, ?, ?)";
+	private static final String SQL_INSERT = "insert into pet (nm_pet, num_age, flt_weight, dt_birthday, img_photo) values (?, ?, ?, ?, ?)";
 	private static final String SQL_UPDATE = "update pet set nm_pet = ?, num_age = ?, flt_weight = ?, dt_birthday = ?, img_photo = ? where " + PRIMARY_KEY_FIELD + " = ?";
 	private static final String SQL_DELETE = "delete from pet where " + PRIMARY_KEY_FIELD + " = ?";
 	private static final String SQL_ENSURE = "select " + PRIMARY_KEY_FIELD + " from pet where nm_pet = ? and num_age = ? and flt_weight = ? and dt_birthday = ? and img_photo = ?";
@@ -38,7 +44,6 @@ public class Pet extends ModelBase {
 
 // Static lookups for fields in the hit counter.
 	public static final int HIT_TOTAL = 0;
-	public static final int HIT_PRIMARY_KEY = 0;
 	public static final int HIT_ID_PET = 1;
 	public static final int HIT_NM_PET = 2;
 	public static final int HIT_NUM_AGE = 3;
@@ -51,6 +56,7 @@ public class Pet extends ModelBase {
 	private static final String[] HIT_FIELDS = { "TOTAL", "id_pet", "nm_pet", "num_age", "flt_weight", "dt_birthday", "img_photo" };
 	// the number of read-hits for a particular field
 	private static int[] HIT_COUNTS = { 0, 0, 0, 0, 0, 0, 0 };
+
 
 	private Long idPet = null;
 	private String nmPet = null;
@@ -90,12 +96,11 @@ public class Pet extends ModelBase {
 		}
 		// create this bean 
 		PreparedStatement preparedStatement = connection.prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS);
-		ConnectionManager.setBigint(preparedStatement, 1, idPet);
-		ConnectionManager.setVarchar(preparedStatement, 2, nmPet);
-		ConnectionManager.setInt(preparedStatement, 3, numAge);
-		ConnectionManager.setFloat(preparedStatement, 4, fltWeight);
-		ConnectionManager.setDate(preparedStatement, 5, dtBirthday);
-		ConnectionManager.setBlob(preparedStatement, 6, imgPhoto);
+		ConnectionManager.setVarchar(preparedStatement, 1, nmPet);
+		ConnectionManager.setInt(preparedStatement, 2, numAge);
+		ConnectionManager.setFloat(preparedStatement, 3, fltWeight);
+		ConnectionManager.setDate(preparedStatement, 4, dtBirthday);
+		ConnectionManager.setBlob(preparedStatement, 5, imgPhoto);
 		preparedStatement.executeUpdate();
 		ResultSet resultSet = preparedStatement.getGeneratedKeys();
 		if(resultSet.next()) {
@@ -198,6 +203,19 @@ public class Pet extends ModelBase {
 	public void setImgPhoto(Blob imgPhoto) { if(isDifferent(this.imgPhoto, imgPhoto)) { this.imgPhoto = imgPhoto;this.isDirty = true; }}
 
 	@Override
+	public ValidationBean validate() {
+		ValidationBean validationBean = new ValidationBean();
+
+		validationBean.addValidationFieldBean(new VarcharValidator("nm_pet", nmPet.toString(), 0, 64, false).validate());
+		validationBean.addValidationFieldBean(new IntValidator("num_age", numAge.toString(), 0, 0, false).validate());
+		validationBean.addValidationFieldBean(new FloatValidator("flt_weight", fltWeight.toString(), 0, 6, true).validate());
+		validationBean.addValidationFieldBean(new DateValidator("dt_birthday", dtBirthday.toString(), 0, 0, true).validate());
+		validationBean.addValidationFieldBean(new BlobValidator("img_photo", imgPhoto.toString(), 0, 0, true).validate());
+		return(validationBean);
+	}
+
+
+	@Override
 	public String toString() {
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append("Model[Pet]\n");
@@ -209,22 +227,44 @@ public class Pet extends ModelBase {
 		stringBuilder.append("  Field[imgPhoto:" + this.imgPhoto + "]\n");
 		return(stringBuilder.toString());
 	}
+	public JSONObject getToJSON() {
+		return(toJSON());
+	}
+
+	public JSONObject toJSON() {
+		JSONObject jsonObject = new JSONObject();
+
+		jsonObject.put("type", "Pet");
+
+		ModelBaseHelper.addtoJSONObject(jsonObject, "idPet", this.getIdPet());
+		ModelBaseHelper.addtoJSONObject(jsonObject, "nmPet", this.getNmPet());
+		ModelBaseHelper.addtoJSONObject(jsonObject, "numAge", this.getNumAge());
+		ModelBaseHelper.addtoJSONObject(jsonObject, "fltWeight", this.getFltWeight());
+		ModelBaseHelper.addtoJSONObject(jsonObject, "dtBirthday", this.getDtBirthday());
+		ModelBaseHelper.addtoJSONObject(jsonObject, "imgPhoto", this.getImgPhoto());
+		return(jsonObject);
+	}
+
 
 	public String toJsonString() {
-		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append("{\n");
-		stringBuilder.append("  \"type\": \"Pet\",\n");
-		stringBuilder.append("  \"idPet\": " + this.idPet + " , \n");
-		stringBuilder.append("  \"nmPet\": \"" + this.nmPet + "\" , \n");
-		stringBuilder.append("  \"numAge\": " + this.numAge + " , \n");
-		stringBuilder.append("  \"fltWeight\": " + this.fltWeight + " , \n");
-		stringBuilder.append("  \"dtBirthday\": \"" + this.dtBirthday + "\" , \n");
-		stringBuilder.append("  \"imgPhoto\": \"" + this.imgPhoto + "\" \n");
-		stringBuilder.append("}\n");
-		return(stringBuilder.toString());
+		return(toJSON().toString());
 	}
 
 	public String getJsonString() {
 		return(toJsonString());
 	}
+
+	public static String getHitCountJson() {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("type", "Pet");
+		jsonObject.put("total", HIT_COUNTS[0]);
+		jsonObject.put("idPet", HIT_COUNTS[1]);
+		jsonObject.put("nmPet", HIT_COUNTS[2]);
+		jsonObject.put("numAge", HIT_COUNTS[3]);
+		jsonObject.put("fltWeight", HIT_COUNTS[4]);
+		jsonObject.put("dtBirthday", HIT_COUNTS[5]);
+		jsonObject.put("imgPhoto", HIT_COUNTS[6]);
+		return(jsonObject.toString());
+	}
+
 }
