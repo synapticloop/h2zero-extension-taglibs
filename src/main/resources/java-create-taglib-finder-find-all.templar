@@ -14,10 +14,18 @@ import javax.servlet.jsp.tagext.BodyTagSupport;{\n}
 {import classpath:/snippet/global/java-logger.templar}
 
 {\n}
-import {database.package}.model.{table.javaClassName};{\n}
-{if !table.isConstant}
-	import {database.package}.finder.{table.javaClassName}Finder;{\n}
+{if table.isTable}
+	import {database.package}.model.{table.javaClassName};{\n}
+	{if !table.isConstant}
+		import {database.package}.finder.{table.javaClassName}{if table.isView}View{endif}Finder;{\n}
+	{endif}
+{else}
+	import {database.package}.view.{table.javaClassName};{\n}
+	{if !table.isConstant}
+		import {database.package}.finder.{table.javaClassName}{if table.isView}View{endif}Finder;{\n}
+	{endif}
 {endif}
+
 import {database.package}.model.util.Constants;{\n}
 {\n}
 import synapticloop.h2zero.extension.taglib.BaseVarTag;{\n}{\n}
@@ -35,7 +43,7 @@ public class FindAllTag extends BaseVarTag {{{\n}
 	{\t}@Override{\n}
 	{\t}public int doStartTag() throws JspException {{{\n}
 		{if !table.isConstant}
-			{\t}{\t}pageContext.setAttribute(var, {table.javaClassName}Finder.findAllSilent(limit, offset));{\n}
+			{\t}{\t}pageContext.setAttribute(var, {table.javaClassName}{if table.isView}View{endif}Finder.findAllSilent(limit, offset));{\n}
 		{else}
 			{\t}{\t}pageContext.setAttribute(var, {table.javaClassName}.ALL);{\n}
 		{endif}

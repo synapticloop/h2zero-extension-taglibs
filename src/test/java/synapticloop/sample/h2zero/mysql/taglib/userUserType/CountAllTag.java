@@ -13,7 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-import synapticloop.sample.h2zero.mysql.counter.UserUserTypeCounter;
+import synapticloop.sample.h2zero.mysql.counter.UserUserTypeViewCounter;
 import synapticloop.sample.h2zero.mysql.model.util.Constants;
 
 import synapticloop.h2zero.extension.taglib.BaseVarTag;
@@ -31,7 +31,7 @@ public class CountAllTag extends BaseVarTag {
 
 	@Override
 	public int doStartTag() throws JspException {
-		pageContext.setAttribute(var, UserUserTypeCounter.countAllSilent());
+		pageContext.setAttribute(var, UserUserTypeViewCounter.countAllSilent());
 		return(EVAL_BODY_INCLUDE);
 }
 }

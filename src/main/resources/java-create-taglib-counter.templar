@@ -9,7 +9,7 @@ package {database.package}.taglib.{table.javaFieldName};{\n}{\n}
 
 {import classpath:/snippet/global/java-taglib-imports.templar}
 
-import {database.package}.counter.{table.javaClassName}Counter;{\n}
+import {database.package}.counter.{table.javaClassName}{if table.isView}View{endif}Counter;{\n}
 {\n}
 
 {set counter as baseQueryObject}

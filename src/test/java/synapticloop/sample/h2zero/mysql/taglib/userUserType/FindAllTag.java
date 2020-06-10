@@ -13,8 +13,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-import synapticloop.sample.h2zero.mysql.model.UserUserType;
-import synapticloop.sample.h2zero.mysql.finder.UserUserTypeFinder;
+import synapticloop.sample.h2zero.mysql.view.UserUserType;
+import synapticloop.sample.h2zero.mysql.finder.UserUserTypeViewFinder;
 import synapticloop.sample.h2zero.mysql.model.util.Constants;
 
 import synapticloop.h2zero.extension.taglib.BaseVarTag;
@@ -32,7 +32,7 @@ public class FindAllTag extends BaseVarTag {
 
 	@Override
 	public int doStartTag() throws JspException {
-		pageContext.setAttribute(var, UserUserTypeFinder.findAllSilent(limit, offset));
+		pageContext.setAttribute(var, UserUserTypeViewFinder.findAllSilent(limit, offset));
 		return(EVAL_BODY_INCLUDE);
 }
 }
