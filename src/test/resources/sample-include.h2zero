@@ -4,7 +4,7 @@
 
 	"metrics": false,
 
-	"generators": [ "java", "sql", "taglibs" ],
+	"generators": [ "java", "sql" ],
 
 	"extensions": [
 		"synapticloop.h2zero.extension.TaglibExtension"

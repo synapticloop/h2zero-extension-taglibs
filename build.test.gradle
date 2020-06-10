@@ -7,22 +7,22 @@ buildscript {
 			url "https://plugins.gradle.org/"
 		}
 	}
-
-	dependencies {
-		classpath 'synapticloop:h2zero-extension-taglibs:4.0.1'
-	}
 }
 
 plugins {
 	id 'java'
 	id 'eclipse'
-	id 'synapticloop.h2zero' version '4.4.1'
+	id 'synapticloop.h2zero' version '4.3.0'
 }
 
 repositories {
 	mavenLocal()
 	mavenCentral()
 	jcenter()
+}
+
+dependencies {
+	implementation 'synapticloop:h2zero-extension-taglibs:4.0.0'
 }
 
 h2zero {
