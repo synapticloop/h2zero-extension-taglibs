@@ -152,7 +152,7 @@ public class TaglibExtension extends Extension {
 		}
 
 
-		// the finder tld - for each database type
+		// the tlds - for each database type
 		String pathname = outFile.getAbsolutePath() + "/src/main/webapp/tld/" + database.getSchema() + "." + options.getDatabase() +".tld";
 		renderToFile(templarContext, tldCreateLibraryParser, pathname, verbose);
 	}
