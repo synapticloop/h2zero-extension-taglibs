@@ -153,7 +153,7 @@ public class TaglibExtension extends Extension {
 
 
 		// the tlds - for each database type
-		String pathname = outFile.getAbsolutePath() + "/src/main/webapp/tld/" + database.getSchema() + "." + options.getDatabase() +".tld";
+		String pathname = outFile.getAbsolutePath() + "/src/main/webapp/WEB-INF/tld/" + database.getSchema() + "." + options.getDatabase() +".tld";
 		renderToFile(templarContext, tldCreateLibraryParser, pathname, verbose);
 	}
 
