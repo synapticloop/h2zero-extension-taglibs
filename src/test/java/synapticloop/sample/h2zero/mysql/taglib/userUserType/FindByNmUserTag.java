@@ -36,7 +36,7 @@ public class FindByNmUserTag extends BaseVarTag {
 
 	@Override
 	public int doStartTag() throws JspException {
-		if(limit != null) {
+		if(limit == null) {
 			pageContext.setAttribute(var, UserUserTypeViewFinder.findByNmUserSilent(nmUser, limit, offset));
 		} else {
 			pageContext.setAttribute(var, UserUserTypeViewFinder.findByNmUserSilent(nmUser));

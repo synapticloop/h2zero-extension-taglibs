@@ -43,7 +43,7 @@ public class FindAllTag extends BaseVarTag {{{\n}
 	{\t}@Override{\n}
 	{\t}public int doStartTag() throws JspException {{{\n}
 		{if !table.isConstant}
-			{\t}{\t}if(limit != null) {{{\n}
+			{\t}{\t}if(limit == null) {{{\n}
 			{\t}{\t}{\t}pageContext.setAttribute(var, {table.javaClassName}{if table.isView}View{endif}Finder.findAllSilent());{\n}
 			{\t}{\t}} else {{{\n}
 			{\t}{\t}{\t}pageContext.setAttribute(var, {table.javaClassName}{if table.isView}View{endif}Finder.findAllSilent(limit, offset));{\n}

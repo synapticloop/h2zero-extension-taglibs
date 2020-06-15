@@ -75,7 +75,7 @@ public class BaseVarTag extends BodyTagSupport {
 	 * 
 	 * @return the offset for results for the SQL query
 	 */
-	public Integer getOffset() { return(this.offset); }
+	public String getOffset() { if(null != this.offset) { return(this.offset.toString()); } else { return(null); } }
 	
 	/**
 	 * set the offset for the results of the SQL query
@@ -86,7 +86,8 @@ public class BaseVarTag extends BodyTagSupport {
 		try {
 			this.offset = Integer.valueOf(offset);
 		} catch(NumberFormatException ex) {
-			// do nothing
+			// TODO
+			// throw new Exception("Could not convert " + offset + " to an integer.");
 		}
 	}
 
@@ -95,7 +96,7 @@ public class BaseVarTag extends BodyTagSupport {
 	 * 
 	 * @return the limit of results for the end of the query
 	 */
-	public Integer getLimit() { return(this.limit); }
+	public String getLimit() { if(null != this.limit) { return(this.limit.toString()); } else { return(null); } }
 
 	/**
 	 * Set the limit for the number of queries
