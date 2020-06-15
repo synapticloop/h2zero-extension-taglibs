@@ -19,7 +19,7 @@ plugins {
 group = 'synapticloop'
 archivesBaseName = 'h2zero-extension-taglibs'
 description = """Taglib extension for h2zero"""
-version = '4.1.3'
+version = '4.1.4'
 
 tasks.withType(Javadoc).all { enabled = false }
 

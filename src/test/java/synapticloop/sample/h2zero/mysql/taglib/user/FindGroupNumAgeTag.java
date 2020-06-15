@@ -35,7 +35,7 @@ public class FindGroupNumAgeTag extends BaseVarTag {
 
 	@Override
 	public int doStartTag() throws JspException {
-		if(limit == null) {
+		if(limit != null) {
 			pageContext.setAttribute(var, UserFinder.findGroupNumAgeSilent(limit, offset));
 		} else {
 			pageContext.setAttribute(var, UserFinder.findGroupNumAgeSilent());

@@ -2,7 +2,7 @@
 {\t}public int doStartTag() throws JspException {{{\n}
 
 {if fn:=[baseQueryObject, 'finder']}
-{\t}{\t}if(limit == null) {{{\n}
+{\t}{\t}if(limit != null) {{{\n}
 	{\t}{\t}{\t}pageContext.setAttribute(var, {table.javaClassName}{if table.isView}View{endif}{baseQueryObject.type}.{baseQueryObject.name}Silent(
 		{import classpath:/snippet/global/java-taglib-method-call.templar}{if !fn:=[fn:length[baseQueryObject.whereFields], '0']}, {endif}limit, offset
 	));{\n}
