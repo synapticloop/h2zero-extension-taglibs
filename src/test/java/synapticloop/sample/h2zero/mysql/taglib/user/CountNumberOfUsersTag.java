@@ -40,4 +40,5 @@ public class CountNumberOfUsersTag extends BaseVarTag {
 		pageContext.setAttribute(var, UserCounter.countNumberOfUsersSilent());
 		return(EVAL_BODY_INCLUDE);
 	}
+
 }

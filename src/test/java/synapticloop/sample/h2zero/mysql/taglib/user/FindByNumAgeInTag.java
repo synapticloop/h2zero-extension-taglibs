@@ -36,9 +36,14 @@ public class FindByNumAgeInTag extends BaseVarTag {
 
 	@Override
 	public int doStartTag() throws JspException {
-		pageContext.setAttribute(var, UserFinder.findByNumAgeInSilent(numAgeList));
+		if(limit != null) {
+			pageContext.setAttribute(var, UserFinder.findByNumAgeInSilent(numAgeList, limit, offset));
+		} else {
+			pageContext.setAttribute(var, UserFinder.findByNumAgeInSilent(numAgeList));
+		}
 		return(EVAL_BODY_INCLUDE);
 	}
+
 	public void setNumAge(List<Integer> numAgeList) {
 		this.numAgeList = numAgeList;
 	}

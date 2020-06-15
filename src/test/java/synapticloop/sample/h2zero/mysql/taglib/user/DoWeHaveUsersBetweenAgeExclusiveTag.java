@@ -42,6 +42,7 @@ public class DoWeHaveUsersBetweenAgeExclusiveTag extends BaseVarTag {
 		pageContext.setAttribute(var, UserQuestion.doWeHaveUsersBetweenAgeExclusiveSilent(numAgeFrom, numAgeTo));
 		return(EVAL_BODY_INCLUDE);
 	}
+
 	public void setNumAgeFrom(Integer numAgeFrom) {
 		this.numAgeFrom = numAgeFrom;
 	}

@@ -40,4 +40,5 @@ public class DoesUserNameExistTag extends BaseVarTag {
 		pageContext.setAttribute(var, UserQuestion.doesUserNameExistSilent());
 		return(EVAL_BODY_INCLUDE);
 	}
+
 }

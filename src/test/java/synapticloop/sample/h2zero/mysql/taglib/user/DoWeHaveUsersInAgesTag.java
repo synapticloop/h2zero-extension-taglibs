@@ -41,6 +41,7 @@ public class DoWeHaveUsersInAgesTag extends BaseVarTag {
 		pageContext.setAttribute(var, UserQuestion.doWeHaveUsersInAgesSilent(numAgeList));
 		return(EVAL_BODY_INCLUDE);
 	}
+
 	public void setNumAge(List<Integer> numAgeList) {
 		this.numAgeList = numAgeList;
 	}

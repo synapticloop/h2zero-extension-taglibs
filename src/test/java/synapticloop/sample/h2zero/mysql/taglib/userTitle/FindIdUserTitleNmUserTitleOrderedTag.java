@@ -35,7 +35,12 @@ public class FindIdUserTitleNmUserTitleOrderedTag extends BaseVarTag {
 
 	@Override
 	public int doStartTag() throws JspException {
-		pageContext.setAttribute(var, UserTitleFinder.findIdUserTitleNmUserTitleOrderedSilent());
+		if(limit != null) {
+			pageContext.setAttribute(var, UserTitleFinder.findIdUserTitleNmUserTitleOrderedSilent(limit, offset));
+		} else {
+			pageContext.setAttribute(var, UserTitleFinder.findIdUserTitleNmUserTitleOrderedSilent());
+		}
 		return(EVAL_BODY_INCLUDE);
 	}
+
 }

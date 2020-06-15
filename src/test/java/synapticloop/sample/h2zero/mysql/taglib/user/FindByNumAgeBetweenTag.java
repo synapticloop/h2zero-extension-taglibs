@@ -37,9 +37,14 @@ public class FindByNumAgeBetweenTag extends BaseVarTag {
 
 	@Override
 	public int doStartTag() throws JspException {
-		pageContext.setAttribute(var, UserFinder.findByNumAgeBetweenSilent(numAgeMin, numAgeMax));
+		if(limit != null) {
+			pageContext.setAttribute(var, UserFinder.findByNumAgeBetweenSilent(numAgeMin, numAgeMax, limit, offset));
+		} else {
+			pageContext.setAttribute(var, UserFinder.findByNumAgeBetweenSilent(numAgeMin, numAgeMax));
+		}
 		return(EVAL_BODY_INCLUDE);
 	}
+
 	public void setNumAgeMin(Integer numAgeMin) {
 		this.numAgeMin = numAgeMin;
 	}

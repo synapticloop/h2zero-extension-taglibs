@@ -33,5 +33,6 @@ public class FindAllTag extends BaseVarTag {
 	public int doStartTag() throws JspException {
 		pageContext.setAttribute(var, UserTitle.ALL);
 		return(EVAL_BODY_INCLUDE);
-}
+	}
+
 }

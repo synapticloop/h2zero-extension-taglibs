@@ -37,9 +37,14 @@ public class FindByTxtAddressEmailTxtPasswordTag extends BaseVarTag {
 
 	@Override
 	public int doStartTag() throws JspException {
-		pageContext.setAttribute(var, UserFinder.findByTxtAddressEmailTxtPasswordSilent(txtAddressEmail, txtPassword));
+		if(limit != null) {
+			pageContext.setAttribute(var, UserFinder.findByTxtAddressEmailTxtPasswordSilent(txtAddressEmail, txtPassword, limit, offset));
+		} else {
+			pageContext.setAttribute(var, UserFinder.findByTxtAddressEmailTxtPasswordSilent(txtAddressEmail, txtPassword));
+		}
 		return(EVAL_BODY_INCLUDE);
 	}
+
 	public void setTxtAddressEmail(String txtAddressEmail) {
 		this.txtAddressEmail = txtAddressEmail;
 	}

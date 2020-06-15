@@ -19,7 +19,7 @@ plugins {
 group = 'synapticloop'
 archivesBaseName = 'h2zero-extension-taglibs'
 description = """Taglib extension for h2zero"""
-version = '4.0.4'
+version = '4.1.1'
 
 tasks.withType(Javadoc).all { enabled = false }
 
@@ -34,7 +34,7 @@ repositories {
 
 dependencies {
 	implementation 'synapticloop:h2zero:4.4.1'
-	implementation 'synapticloop:h2zero-extension-taglibs:4.0.3'
+	implementation 'synapticloop:h2zero-extension-taglibs:4.1.1'
 
 	implementation 'javax.servlet.jsp:jsp-api:2.2'
 	implementation 'javax.servlet:javax.servlet-api:4.0.1'

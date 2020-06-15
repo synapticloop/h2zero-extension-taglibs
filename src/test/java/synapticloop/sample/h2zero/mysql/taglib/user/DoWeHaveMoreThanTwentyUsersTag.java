@@ -40,4 +40,5 @@ public class DoWeHaveMoreThanTwentyUsersTag extends BaseVarTag {
 		pageContext.setAttribute(var, UserQuestion.doWeHaveMoreThanTwentyUsersSilent());
 		return(EVAL_BODY_INCLUDE);
 	}
+
 }

@@ -22,7 +22,7 @@ repositories {
 }
 
 dependencies {
-	implementation 'synapticloop:h2zero-extension-taglibs:4.0.3'
+	implementation 'synapticloop:h2zero-extension-taglibs:4.1.1'
 }
 
 h2zero {

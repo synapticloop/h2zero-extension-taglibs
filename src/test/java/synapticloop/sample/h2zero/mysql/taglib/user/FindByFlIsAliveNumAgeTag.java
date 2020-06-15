@@ -37,9 +37,14 @@ public class FindByFlIsAliveNumAgeTag extends BaseVarTag {
 
 	@Override
 	public int doStartTag() throws JspException {
-		pageContext.setAttribute(var, UserFinder.findByFlIsAliveNumAgeSilent(flIsAlive, numAge));
+		if(limit != null) {
+			pageContext.setAttribute(var, UserFinder.findByFlIsAliveNumAgeSilent(flIsAlive, numAge, limit, offset));
+		} else {
+			pageContext.setAttribute(var, UserFinder.findByFlIsAliveNumAgeSilent(flIsAlive, numAge));
+		}
 		return(EVAL_BODY_INCLUDE);
 	}
+
 	public void setFlIsAlive(Boolean flIsAlive) {
 		this.flIsAlive = flIsAlive;
 	}

@@ -32,7 +32,12 @@ public class FindAllTag extends BaseVarTag {
 
 	@Override
 	public int doStartTag() throws JspException {
-		pageContext.setAttribute(var, UserFinder.findAllSilent(limit, offset));
+		if(limit != null) {
+			pageContext.setAttribute(var, UserFinder.findAllSilent());
+		} else {
+			pageContext.setAttribute(var, UserFinder.findAllSilent(limit, offset));
+		}
 		return(EVAL_BODY_INCLUDE);
-}
+	}
+
 }

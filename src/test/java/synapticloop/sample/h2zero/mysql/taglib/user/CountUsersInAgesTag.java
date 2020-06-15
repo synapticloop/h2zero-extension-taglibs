@@ -41,6 +41,7 @@ public class CountUsersInAgesTag extends BaseVarTag {
 		pageContext.setAttribute(var, UserCounter.countUsersInAgesSilent(numAgeList));
 		return(EVAL_BODY_INCLUDE);
 	}
+
 	public void setNumAge(List<Integer> numAgeList) {
 		this.numAgeList = numAgeList;
 	}

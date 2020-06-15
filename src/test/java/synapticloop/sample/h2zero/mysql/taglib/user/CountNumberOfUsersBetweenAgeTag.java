@@ -42,6 +42,7 @@ public class CountNumberOfUsersBetweenAgeTag extends BaseVarTag {
 		pageContext.setAttribute(var, UserCounter.countNumberOfUsersBetweenAgeSilent(numAgeFrom, numAgeTo));
 		return(EVAL_BODY_INCLUDE);
 	}
+
 	public void setNumAgeFrom(Integer numAgeFrom) {
 		this.numAgeFrom = numAgeFrom;
 	}

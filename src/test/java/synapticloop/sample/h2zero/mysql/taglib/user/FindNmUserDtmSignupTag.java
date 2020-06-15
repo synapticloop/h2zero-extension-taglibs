@@ -35,7 +35,12 @@ public class FindNmUserDtmSignupTag extends BaseVarTag {
 
 	@Override
 	public int doStartTag() throws JspException {
-		pageContext.setAttribute(var, UserFinder.findNmUserDtmSignupSilent());
+		if(limit != null) {
+			pageContext.setAttribute(var, UserFinder.findNmUserDtmSignupSilent(limit, offset));
+		} else {
+			pageContext.setAttribute(var, UserFinder.findNmUserDtmSignupSilent());
+		}
 		return(EVAL_BODY_INCLUDE);
 	}
+
 }

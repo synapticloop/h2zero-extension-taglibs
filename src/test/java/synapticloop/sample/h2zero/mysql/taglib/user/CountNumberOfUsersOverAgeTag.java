@@ -41,6 +41,7 @@ public class CountNumberOfUsersOverAgeTag extends BaseVarTag {
 		pageContext.setAttribute(var, UserCounter.countNumberOfUsersOverAgeSilent(numAge));
 		return(EVAL_BODY_INCLUDE);
 	}
+
 	public void setNumAge(Integer numAge) {
 		this.numAge = numAge;
 	}

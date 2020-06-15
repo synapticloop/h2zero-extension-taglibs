@@ -36,9 +36,14 @@ public class FindByTxtAddressEmailTag extends BaseVarTag {
 
 	@Override
 	public int doStartTag() throws JspException {
-		pageContext.setAttribute(var, UserFinder.findByTxtAddressEmailSilent(txtAddressEmail));
+		if(limit != null) {
+			pageContext.setAttribute(var, UserFinder.findByTxtAddressEmailSilent(txtAddressEmail, limit, offset));
+		} else {
+			pageContext.setAttribute(var, UserFinder.findByTxtAddressEmailSilent(txtAddressEmail));
+		}
 		return(EVAL_BODY_INCLUDE);
 	}
+
 	public void setTxtAddressEmail(String txtAddressEmail) {
 		this.txtAddressEmail = txtAddressEmail;
 	}
