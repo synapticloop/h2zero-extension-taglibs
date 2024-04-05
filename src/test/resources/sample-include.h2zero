@@ -7,8 +7,12 @@
 	"generators": [ "java", "sql" ],
 
 	"extensions": [
-		"synapticloop.h2zero.extension.TaglibExtension"
+		"com.synapticloop.h2zero.extension.TaglibExtension"
 	],
+
+	"com.synapticloop.h2zero.extension.TaglibExtension": {
+		"webappOutputDir": "src/test/webapp"
+	},
 
 	"validators": {
 		"UpdaterNameValidator": {
@@ -28,7 +32,7 @@
 
 "database": {
 	"schema": "sample",
-	"package": "synapticloop.sample.h2zero.mysql",
+	"package": "com.synapticloop.sample.h2zero.mysql",
 	"defaultStatementCacheSize": 1024,
 
 	"tables": [
