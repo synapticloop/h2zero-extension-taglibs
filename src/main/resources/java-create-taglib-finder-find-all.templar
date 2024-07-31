@@ -36,21 +36,19 @@ public class FindAllTag extends BaseVarTag {{{\n}
 	{\t}@SuppressWarnings("unused"){\n}
 	{\t}private static final String BINDER = Constants.{table.upperName}_BINDER;{\n}{\n}
 
-{\t}{set "FindAllTag" as loggerClass}{import classpath:/snippet/global/java-logger-declaration.templar}{\n}{\n}
+	{set "FindAllTag" as loggerClass}{import classpath:/snippet/global/java-logger-declaration.templar}{\n}{\n}
 
 	{\t}@Override{\n}
 	{\t}public int doStartTag() throws JspException {{{\n}
-		{if table.isTable}
-			{if !table.isConstant}
-				{\t}{\t}if(limit == null) {{{\n}
-				{\t}{\t}{\t}pageContext.setAttribute(var, {table.javaClassName}{if table.isView}View{endif}Finder.findAllSilent());{\n}
-				{\t}{\t}} else {{{\n}
-				{\t}{\t}{\t}pageContext.setAttribute(var, {table.javaClassName}{if table.isView}View{endif}Finder.findAllSilent(limit, offset));{\n}
-				{\t}{\t}}{\n}
-			{else}
-				{\t}{\t}pageContext.setAttribute(var, {table.javaClassName}.ALL);{\n}
-			{endif}
+		{if !table.isConstant}
+			{\t}{\t}if(limit == null) {{{\n}
+			{\t}{\t}{\t}pageContext.setAttribute(var, {table.javaClassName}{if table.isView}View{endif}Finder.findAll().executeSilent());{\n}
+			{\t}{\t}} else {{{\n}
+			{\t}{\t}{\t}pageContext.setAttribute(var, {table.javaClassName}{if table.isView}View{endif}Finder.findAll().withLimit(limit).withOffset(offset).executeSilent());{\n}
+			{\t}{\t}}{\n}
 		{else}
+			{\t}{\t}pageContext.setAttribute(var, {table.javaClassName}.ALL);{\n}
+		{endif}
 		{\t}{\t}return(EVAL_BODY_INCLUDE);{\n}
 	{\t}}{\n}{\n}
 }

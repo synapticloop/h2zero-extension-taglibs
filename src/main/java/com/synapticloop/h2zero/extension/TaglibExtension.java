@@ -21,18 +21,20 @@ package com.synapticloop.h2zero.extension;
 import java.io.File;
 import java.util.*;
 
+import com.synapticloop.h2zero.generator.model.Database;
+import com.synapticloop.h2zero.generator.model.Options;
 import org.apache.commons.collections.IteratorUtils;
 import org.json.JSONObject;
 
-import com.synapticloop.h2zero.extension.Extension;
-import com.synapticloop.h2zero.model.Counter;
-import com.synapticloop.h2zero.model.Database;
-import com.synapticloop.h2zero.model.Finder;
-import com.synapticloop.h2zero.model.Options;
-import com.synapticloop.h2zero.model.Question;
-import com.synapticloop.h2zero.model.Table;
-import com.synapticloop.h2zero.model.View;
-import com.synapticloop.h2zero.validator.BaseValidator;
+import com.synapticloop.h2zero.generator.extension.Extension;
+import com.synapticloop.h2zero.generator.model.Counter;
+import com.synapticloop.h2zero.generator.model.Database;
+import com.synapticloop.h2zero.generator.model.Finder;
+import com.synapticloop.h2zero.generator.model.Options;
+import com.synapticloop.h2zero.generator.model.Question;
+import com.synapticloop.h2zero.generator.model.Table;
+import com.synapticloop.h2zero.generator.model.View;
+import com.synapticloop.h2zero.generator.validator.BaseValidator;
 import com.synapticloop.templar.Parser;
 import com.synapticloop.templar.exception.ParseException;
 import com.synapticloop.templar.exception.RenderException;
@@ -56,6 +58,7 @@ import com.synapticloop.templar.utils.TemplarContext;
  */
 
 public class TaglibExtension extends Extension {
+	/** <p>The output directory </p> */
 	public static final String KEY_WEBAPP_OUTPUT_DIR = "webappOutputDir";
 
 	private static final Map<String, String> REQUIRED_OPTIONS = new HashMap<>();

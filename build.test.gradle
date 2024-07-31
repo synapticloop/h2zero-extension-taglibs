@@ -12,7 +12,7 @@ buildscript {
 plugins {
 	id 'java'
 	id 'eclipse'
-	id 'synapticloop.h2zero' version '4.4.1'
+	id 'synapticloop.h2zero' version '6.0.0'
 }
 
 repositories {
@@ -22,7 +22,7 @@ repositories {
 }
 
 dependencies {
-	implementation 'synapticloop:h2zero-extension-taglibs:4.1.4'
+	implementation 'synapticloop:h2zero-extension-taglibs:6.0.0'
 }
 
 h2zero {

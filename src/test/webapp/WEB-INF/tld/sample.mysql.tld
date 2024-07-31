@@ -221,7 +221,7 @@
 		</attribute>
 		<attribute>
 			<description>
-				Whether to remove the var at the end of the tag
+				Whether to remove the var at the end of the tag default (false)
 			</description>
 			<name>removeVar</name>
 			<required>false</required>
@@ -262,7 +262,7 @@
 		</attribute>
 		<attribute>
 			<description>
-				Whether to remove the var at the end of the tag
+				Whether to remove the var at the end of the tag default (false)
 			</description>
 			<name>removeVar</name>
 			<required>false</required>
@@ -422,7 +422,7 @@
 		</attribute>
 		<attribute>
 			<description>
-				Whether to remove the var at the end of the tag
+				Whether to remove the var at the end of the tag default (false)
 			</description>
 			<name>removeVar</name>
 			<required>false</required>
@@ -479,7 +479,7 @@
 		</attribute>
 		<attribute>
 			<description>
-				Whether to remove the var at the end of the tag
+				Whether to remove the var at the end of the tag default (false)
 			</description>
 			<name>removeVar</name>
 			<required>false</required>
@@ -528,27 +528,11 @@
 		</attribute>
 		<attribute>
 			<description>
-				Whether to remove the var at the end of the tag
+				Whether to remove the var at the end of the tag default (false)
 			</description>
 			<name>removeVar</name>
 			<required>false</required>
 			<rtexprvalue>false</rtexprvalue>
-		</attribute>
-		<attribute>
-			<description>
-				The limit of the results for the query
-			</description>
-			<name>limit</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		<attribute>
-			<description>
-				The offset to start the results at
-			</description>
-			<name>offset</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
 
@@ -577,27 +561,11 @@
 		</attribute>
 		<attribute>
 			<description>
-				Whether to remove the var at the end of the tag
+				Whether to remove the var at the end of the tag default (false)
 			</description>
 			<name>removeVar</name>
 			<required>false</required>
 			<rtexprvalue>false</rtexprvalue>
-		</attribute>
-		<attribute>
-			<description>
-				The limit of the results for the query
-			</description>
-			<name>limit</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		<attribute>
-			<description>
-				The offset to start the results at
-			</description>
-			<name>offset</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
 
@@ -634,27 +602,11 @@
 		</attribute>
 		<attribute>
 			<description>
-				Whether to remove the var at the end of the tag
+				Whether to remove the var at the end of the tag default (false)
 			</description>
 			<name>removeVar</name>
 			<required>false</required>
 			<rtexprvalue>false</rtexprvalue>
-		</attribute>
-		<attribute>
-			<description>
-				The limit of the results for the query
-			</description>
-			<name>limit</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		<attribute>
-			<description>
-				The offset to start the results at
-			</description>
-			<name>offset</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
 
@@ -675,7 +627,7 @@
 		</attribute>
 		<attribute>
 			<description>
-				Whether to remove the var at the end of the tag
+				Whether to remove the var at the end of the tag default (false)
 			</description>
 			<name>removeVar</name>
 			<required>false</required>
@@ -716,7 +668,7 @@
 		</attribute>
 		<attribute>
 			<description>
-				Whether to remove the var at the end of the tag
+				Whether to remove the var at the end of the tag default (false)
 			</description>
 			<name>removeVar</name>
 			<required>false</required>
@@ -765,7 +717,7 @@
 		</attribute>
 		<attribute>
 			<description>
-				Whether to remove the var at the end of the tag
+				Whether to remove the var at the end of the tag default (false)
 			</description>
 			<name>removeVar</name>
 			<required>false</required>
@@ -822,7 +774,7 @@
 		</attribute>
 		<attribute>
 			<description>
-				Whether to remove the var at the end of the tag
+				Whether to remove the var at the end of the tag default (false)
 			</description>
 			<name>removeVar</name>
 			<required>false</required>
@@ -1256,27 +1208,11 @@
 		</attribute>
 		<attribute>
 			<description>
-				Whether to remove the var at the end of the tag
+				Whether to remove the var at the end of the tag default (false)
 			</description>
 			<name>removeVar</name>
 			<required>false</required>
 			<rtexprvalue>false</rtexprvalue>
-		</attribute>
-		<attribute>
-			<description>
-				The limit of the results for the query
-			</description>
-			<name>limit</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		<attribute>
-			<description>
-				The offset to start the results at
-			</description>
-			<name>offset</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
 

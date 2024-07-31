@@ -36,7 +36,7 @@ public class FindByPrimaryKeyTag extends BaseVarTag {{{\n}
 	{\t}@Override{\n}
 	{\t}public int doStartTag() throws JspException {{{\n}
 		{if !table.isConstant}
-			{\t}{\t}pageContext.setAttribute(var, {table.javaClassName}Finder.findByPrimaryKeySilent(primaryKey));{\n}
+			{\t}{\t}pageContext.setAttribute(var, {table.javaClassName}Finder.findByPrimaryKey(primaryKey).executeSilent());{\n}
 		{else}
 			{\t}{\t}pageContext.setAttribute(var, {table.javaClassName}.ALL_LOOKUP.get(primaryKey));{\n}
 		{endif}

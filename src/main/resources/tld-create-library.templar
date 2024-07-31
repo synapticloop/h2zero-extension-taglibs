@@ -154,13 +154,14 @@
 
 		{\t}{\t}<attribute>{\n}
 		{\t}{\t}{\t}<description>{\n}
-		{\t}{\t}{\t}{\t}Whether to remove the var at the end of the tag{\n}
+		{\t}{\t}{\t}{\t}Whether to remove the var at the end of the tag default (false){\n}
 		{\t}{\t}{\t}</description>{\n}
 		{\t}{\t}{\t}<name>removeVar</name>{\n}
 		{\t}{\t}{\t}<required>false</required>{\n}
 		{\t}{\t}{\t}<rtexprvalue>false</rtexprvalue>{\n}
 		{\t}{\t}</attribute>{\n}
 
+		{if !finder.unique}
 		{\t}{\t}<attribute>{\n}
 		{\t}{\t}{\t}<description>{\n}
 		{\t}{\t}{\t}{\t}The limit of the results for the query{\n}
@@ -178,7 +179,7 @@
 		{\t}{\t}{\t}<required>false</required>{\n}
 		{\t}{\t}{\t}<rtexprvalue>true</rtexprvalue>{\n}
 		{\t}{\t}</attribute>{\n}
-
+		{endif}
 		{\t}</tag>{\n}
 		{\n}
 	{endloop}
