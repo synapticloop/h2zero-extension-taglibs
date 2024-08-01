@@ -39,7 +39,7 @@ public class FindByNmUserTag extends BaseVarTag {
 		if(limit != null) {
 			pageContext.setAttribute(var, UserUserTypeViewFinder.findByNmUser(nmUser).withLimit(limit).withOffset(offset).executeSilent());
 		} else {
-			pageContext.setAttribute(var, UserUserTypeViewFinder.findByNmUser(nmUser));
+			pageContext.setAttribute(var, UserUserTypeViewFinder.findByNmUser(nmUser).executeSilent());
 		}
 		return(EVAL_BODY_INCLUDE);
 	}

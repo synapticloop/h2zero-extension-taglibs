@@ -39,7 +39,7 @@ public class FindByNumAgeTag extends BaseVarTag {
 		if(limit != null) {
 			pageContext.setAttribute(var, UserFinder.findByNumAge(numAge).withLimit(limit).withOffset(offset).executeSilent());
 		} else {
-			pageContext.setAttribute(var, UserFinder.findByNumAge(numAge));
+			pageContext.setAttribute(var, UserFinder.findByNumAge(numAge).executeSilent());
 		}
 		return(EVAL_BODY_INCLUDE);
 	}

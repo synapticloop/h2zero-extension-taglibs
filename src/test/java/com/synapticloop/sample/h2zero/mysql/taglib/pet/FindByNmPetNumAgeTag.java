@@ -37,7 +37,7 @@ public class FindByNmPetNumAgeTag extends BaseVarTag {
 
 	@Override
 	public int doStartTag() throws JspException {
-			pageContext.setAttribute(var, PetFinder.findByNmPetNumAge(nmPet, numAge));
+			pageContext.setAttribute(var, PetFinder.findByNmPetNumAge(nmPet, numAge).executeSilent());
 		return(EVAL_BODY_INCLUDE);
 	}
 

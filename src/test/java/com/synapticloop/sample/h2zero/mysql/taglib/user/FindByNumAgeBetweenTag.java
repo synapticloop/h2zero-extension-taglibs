@@ -40,7 +40,7 @@ public class FindByNumAgeBetweenTag extends BaseVarTag {
 		if(limit != null) {
 			pageContext.setAttribute(var, UserFinder.findByNumAgeBetween(numAgeMin, numAgeMax).withLimit(limit).withOffset(offset).executeSilent());
 		} else {
-			pageContext.setAttribute(var, UserFinder.findByNumAgeBetween(numAgeMin, numAgeMax));
+			pageContext.setAttribute(var, UserFinder.findByNumAgeBetween(numAgeMin, numAgeMax).executeSilent());
 		}
 		return(EVAL_BODY_INCLUDE);
 	}

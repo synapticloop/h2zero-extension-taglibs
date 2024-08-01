@@ -4,7 +4,7 @@
 {if fn:=[baseQueryObject, 'finder']}
 {if finder.unique}
 		{\t}{\t}{\t}pageContext.setAttribute(var, {table.javaClassName}{if table.isView}View{endif}{baseQueryObject.type}.{baseQueryObject.name}(
-			{import classpath:/snippet/global/java-taglib-method-call.templar}));{\n}
+			{import classpath:/snippet/global/java-taglib-method-call.templar}).executeSilent());{\n}
 {else}
 	{\t}{\t}if(limit != null) {{{\n}
 		{\t}{\t}{\t}pageContext.setAttribute(var, {table.javaClassName}{if table.isView}View{endif}{baseQueryObject.type}.{baseQueryObject.name}(
@@ -13,7 +13,7 @@
 
 	{\t}{\t}} else {{{\n}
 		{\t}{\t}{\t}pageContext.setAttribute(var, {table.javaClassName}{if table.isView}View{endif}{baseQueryObject.type}.{baseQueryObject.name}(
-			{import classpath:/snippet/global/java-taglib-method-call.templar}));{\n}
+			{import classpath:/snippet/global/java-taglib-method-call.templar}).executeSilent());{\n}
 	{\t}{\t}}{\n}
 {endif}
 

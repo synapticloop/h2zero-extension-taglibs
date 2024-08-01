@@ -37,7 +37,7 @@ public class FindByTxtAddressEmailTxtPasswordTag extends BaseVarTag {
 
 	@Override
 	public int doStartTag() throws JspException {
-			pageContext.setAttribute(var, UserFinder.findByTxtAddressEmailTxtPassword(txtAddressEmail, txtPassword));
+			pageContext.setAttribute(var, UserFinder.findByTxtAddressEmailTxtPassword(txtAddressEmail, txtPassword).executeSilent());
 		return(EVAL_BODY_INCLUDE);
 	}
 

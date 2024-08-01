@@ -38,7 +38,7 @@ public class FindGroupNumAgeTag extends BaseVarTag {
 		if(limit != null) {
 			pageContext.setAttribute(var, UserFinder.findGroupNumAge().withLimit(limit).withOffset(offset).executeSilent());
 		} else {
-			pageContext.setAttribute(var, UserFinder.findGroupNumAge());
+			pageContext.setAttribute(var, UserFinder.findGroupNumAge().executeSilent());
 		}
 		return(EVAL_BODY_INCLUDE);
 	}

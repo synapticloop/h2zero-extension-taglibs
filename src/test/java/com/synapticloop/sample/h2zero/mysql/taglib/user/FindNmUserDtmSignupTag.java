@@ -38,7 +38,7 @@ public class FindNmUserDtmSignupTag extends BaseVarTag {
 		if(limit != null) {
 			pageContext.setAttribute(var, UserFinder.findNmUserDtmSignup().withLimit(limit).withOffset(offset).executeSilent());
 		} else {
-			pageContext.setAttribute(var, UserFinder.findNmUserDtmSignup());
+			pageContext.setAttribute(var, UserFinder.findNmUserDtmSignup().executeSilent());
 		}
 		return(EVAL_BODY_INCLUDE);
 	}

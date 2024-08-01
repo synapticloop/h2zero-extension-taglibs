@@ -40,7 +40,7 @@ public class FindByFlIsAliveNumAgeTag extends BaseVarTag {
 		if(limit != null) {
 			pageContext.setAttribute(var, UserFinder.findByFlIsAliveNumAge(flIsAlive, numAge).withLimit(limit).withOffset(offset).executeSilent());
 		} else {
-			pageContext.setAttribute(var, UserFinder.findByFlIsAliveNumAge(flIsAlive, numAge));
+			pageContext.setAttribute(var, UserFinder.findByFlIsAliveNumAge(flIsAlive, numAge).executeSilent());
 		}
 		return(EVAL_BODY_INCLUDE);
 	}

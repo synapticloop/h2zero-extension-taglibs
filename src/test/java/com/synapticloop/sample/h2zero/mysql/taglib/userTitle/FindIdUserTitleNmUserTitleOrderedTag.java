@@ -38,7 +38,7 @@ public class FindIdUserTitleNmUserTitleOrderedTag extends BaseVarTag {
 		if(limit != null) {
 			pageContext.setAttribute(var, UserTitleFinder.findIdUserTitleNmUserTitleOrdered().withLimit(limit).withOffset(offset).executeSilent());
 		} else {
-			pageContext.setAttribute(var, UserTitleFinder.findIdUserTitleNmUserTitleOrdered());
+			pageContext.setAttribute(var, UserTitleFinder.findIdUserTitleNmUserTitleOrdered().executeSilent());
 		}
 		return(EVAL_BODY_INCLUDE);
 	}

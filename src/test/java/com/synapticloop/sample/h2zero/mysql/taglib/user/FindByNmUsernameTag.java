@@ -36,7 +36,7 @@ public class FindByNmUsernameTag extends BaseVarTag {
 
 	@Override
 	public int doStartTag() throws JspException {
-			pageContext.setAttribute(var, UserFinder.findByNmUsername(nmUsername));
+			pageContext.setAttribute(var, UserFinder.findByNmUsername(nmUsername).executeSilent());
 		return(EVAL_BODY_INCLUDE);
 	}
 

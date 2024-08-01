@@ -38,7 +38,7 @@ public class FindAllOrderedTag extends BaseVarTag {
 		if(limit != null) {
 			pageContext.setAttribute(var, UserTitleFinder.findAllOrdered().withLimit(limit).withOffset(offset).executeSilent());
 		} else {
-			pageContext.setAttribute(var, UserTitleFinder.findAllOrdered());
+			pageContext.setAttribute(var, UserTitleFinder.findAllOrdered().executeSilent());
 		}
 		return(EVAL_BODY_INCLUDE);
 	}
