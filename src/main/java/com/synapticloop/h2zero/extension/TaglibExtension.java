@@ -1,4 +1,4 @@
-package synapticloop.h2zero.extension;
+package com.synapticloop.h2zero.extension;
 
 /*
  * Copyright (c) 2018 synapticloop.
@@ -21,22 +21,23 @@ package synapticloop.h2zero.extension;
 import java.io.File;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.json.JSONObject;
 
-import synapticloop.h2zero.extension.Extension;
-import synapticloop.h2zero.model.Counter;
-import synapticloop.h2zero.model.Database;
-import synapticloop.h2zero.model.Finder;
-import synapticloop.h2zero.model.Options;
-import synapticloop.h2zero.model.Question;
-import synapticloop.h2zero.model.Table;
-import synapticloop.h2zero.model.View;
-import synapticloop.h2zero.validator.BaseValidator;
-import synapticloop.templar.Parser;
-import synapticloop.templar.exception.ParseException;
-import synapticloop.templar.exception.RenderException;
-import synapticloop.templar.utils.TemplarContext;
+import com.synapticloop.h2zero.extension.Extension;
+import com.synapticloop.h2zero.model.Counter;
+import com.synapticloop.h2zero.model.Database;
+import com.synapticloop.h2zero.model.Finder;
+import com.synapticloop.h2zero.model.Options;
+import com.synapticloop.h2zero.model.Question;
+import com.synapticloop.h2zero.model.Table;
+import com.synapticloop.h2zero.model.View;
+import com.synapticloop.h2zero.validator.BaseValidator;
+import com.synapticloop.templar.Parser;
+import com.synapticloop.templar.exception.ParseException;
+import com.synapticloop.templar.exception.RenderException;
+import com.synapticloop.templar.utils.TemplarContext;
 
 /**
 /**
@@ -155,6 +156,18 @@ public class TaglibExtension extends Extension {
 		// the tlds - for each database type
 		String pathname = outFile.getAbsolutePath() + "/src/main/webapp/WEB-INF/tld/" + database.getSchema() + "." + options.getDatabase() +".tld";
 		renderToFile(templarContext, tldCreateLibraryParser, pathname, verbose);
+	}
+
+	@Override public List<String> getRequiredOutputOptions() {
+		return List.of();
+	}
+
+	@Override public String getRequiredOutputOptionDescription(String s) {
+		return "";
+	}
+
+	@Override public Map<String, String> getDefaultOutputOptions() {
+		return Map.of();
 	}
 
 	@Override

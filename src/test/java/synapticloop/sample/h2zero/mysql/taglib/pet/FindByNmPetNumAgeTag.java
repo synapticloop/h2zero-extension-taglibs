@@ -4,13 +4,7 @@ package synapticloop.sample.h2zero.mysql.taglib.pet;
 //    with the use of synapticloop templar templating language
 //           (java-create-taglib-finder.templar)
 
-import java.sql.Date;
-import java.sql.Timestamp;
-import java.util.List;
-
 import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.PageContext;
-import javax.servlet.jsp.tagext.BodyTagSupport;
 
 
 import org.slf4j.Logger;
@@ -18,9 +12,8 @@ import org.slf4j.LoggerFactory;
 
 
 import synapticloop.sample.h2zero.mysql.model.util.Constants;
-import synapticloop.sample.h2zero.mysql.model.Pet;
 import synapticloop.sample.h2zero.mysql.finder.PetFinder;
-import synapticloop.h2zero.extension.taglib.BaseVarTag;
+import com.synapticloop.h2zero.extension.taglib.BaseVarTag;
 
 
 @SuppressWarnings("serial")

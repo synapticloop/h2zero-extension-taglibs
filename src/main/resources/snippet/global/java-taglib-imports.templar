@@ -2,9 +2,9 @@ import java.sql.Date;{\n}
 import java.sql.Timestamp;{\n}
 import java.util.List;{\n}
 {\n}
-import javax.servlet.jsp.JspException;{\n}
-import javax.servlet.jsp.PageContext;{\n}
-import javax.servlet.jsp.tagext.BodyTagSupport;{\n}
+import jakarta.servlet.jsp.JspException;{\n}
+import jakarta.servlet.jsp.PageContext;{\n}
+import jakarta.servlet.jsp.tagext.BodyTagSupport;{\n}
 {\n}
 {import classpath:/snippet/global/java-logger.templar}
 
@@ -19,7 +19,7 @@ import {database.package}.model.util.Constants;{\n}
 
 import {database.package}.finder.{table.javaClassName}{if table.isView}View{endif}Finder;{\n}
 
-import synapticloop.h2zero.extension.taglib.BaseVarTag;{\n}{\n}
+import com.synapticloop.h2zero.extension.taglib.BaseVarTag;{\n}{\n}
 
 {\n}
 

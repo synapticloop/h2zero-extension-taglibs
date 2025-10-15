@@ -13,6 +13,7 @@
 {\t}<display-name>{database.schema} Tag Library</display-name>{\n}
 {\t}<tlib-version>1.2</tlib-version>{\n}
 {\t}<short-name>{database.schema}</short-name>{\n}
+{\t}<uri>https://h2zero.synapticloop.com/{database.schema}.{options.database}</uri>{\n}
 {\n}
 
 {loop database.tables as table}
@@ -91,7 +92,7 @@
 	{\t}{\t}{\t}</description>{\n}
 	{\t}{\t}{\t}<name>limit</name>{\n}
 	{\t}{\t}{\t}<required>false</required>{\n}
-	{\t}{\t}{\t}<rtexprvalue>false</rtexprvalue>{\n}
+	{\t}{\t}{\t}<rtexprvalue>true</rtexprvalue>{\n}
 	{\t}{\t}</attribute>{\n}
 
 	{\t}{\t}<attribute>{\n}
@@ -100,7 +101,7 @@
 	{\t}{\t}{\t}</description>{\n}
 	{\t}{\t}{\t}<name>offset</name>{\n}
 	{\t}{\t}{\t}<required>false</required>{\n}
-	{\t}{\t}{\t}<rtexprvalue>false</rtexprvalue>{\n}
+	{\t}{\t}{\t}<rtexprvalue>true</rtexprvalue>{\n}
 	{\t}{\t}</attribute>{\n}
 
 	{\t}</tag>{\n}{\n}
@@ -167,7 +168,7 @@
 		{\t}{\t}{\t}</description>{\n}
 		{\t}{\t}{\t}<name>limit</name>{\n}
 		{\t}{\t}{\t}<required>false</required>{\n}
-		{\t}{\t}{\t}<rtexprvalue>false</rtexprvalue>{\n}
+		{\t}{\t}{\t}<rtexprvalue>true</rtexprvalue>{\n}
 		{\t}{\t}</attribute>{\n}
 
 		{\t}{\t}<attribute>{\n}
@@ -176,7 +177,7 @@
 		{\t}{\t}{\t}</description>{\n}
 		{\t}{\t}{\t}<name>offset</name>{\n}
 		{\t}{\t}{\t}<required>false</required>{\n}
-		{\t}{\t}{\t}<rtexprvalue>false</rtexprvalue>{\n}
+		{\t}{\t}{\t}<rtexprvalue>true</rtexprvalue>{\n}
 		{\t}{\t}</attribute>{\n}
 
 		{\t}</tag>{\n}

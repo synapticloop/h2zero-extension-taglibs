@@ -5,19 +5,16 @@ package synapticloop.sample.h2zero.mysql.taglib.user;
 //     (java-create-taglib-finder-find-by-primary-key.templar)
 
 import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.PageContext;
-import javax.servlet.jsp.tagext.BodyTagSupport;
 
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-import synapticloop.sample.h2zero.mysql.model.User;
 import synapticloop.sample.h2zero.mysql.finder.UserFinder;
 import synapticloop.sample.h2zero.mysql.model.util.Constants;
 
-import synapticloop.h2zero.extension.taglib.BaseVarTag;
+import com.synapticloop.h2zero.extension.taglib.BaseVarTag;
 
 @SuppressWarnings("serial")
 public class FindByPrimaryKeyTag extends BaseVarTag {
