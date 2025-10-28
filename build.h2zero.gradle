@@ -1,28 +1,31 @@
 buildscript {
 	repositories {
 		mavenCentral()
-		jcenter()
 		mavenLocal()
-		maven {
-			url "https://plugins.gradle.org/"
-		}
+		maven { url "https://reposilite.synapticloop.com/releases"}
 	}
 
 	dependencies {
-		classpath 'synapticloop:h2zero-extension-taglibs:4.1.4'
+		classpath 'com.synapticloop:h2zero:' + findProperty("h2zero.version")
+		classpath 'com.synapticloop:h2zero-extension-taglibs:' + findProperty("h2zero.extension.version")
 	}
 }
 
 plugins {
 	id 'java'
 	id 'eclipse'
-	id 'synapticloop.h2zero' version '4.4.1'
 }
+
+apply plugin: 'synapticloop.h2zero'
 
 repositories {
 	mavenLocal()
 	mavenCentral()
-	jcenter()
+	maven { url "https://reposilite.synapticloop.com/releases"}
+}
+
+dependencies {
+	implementation 'com.synapticloop:h2zero-extension-taglibs:' + findProperty("h2zero.extension.version")
 }
 
 h2zero {

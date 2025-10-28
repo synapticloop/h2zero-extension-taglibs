@@ -7,8 +7,11 @@
 	"generators": [ "java", "sql" ],
 
 	"extensions": [
-		"synapticloop.h2zero.extension.TaglibExtension"
+		"com.synapticloop.h2zero.generator.extension.TaglibExtension"
 	],
+	"com.synapticloop.h2zero.generator.extension.TaglibExtension": {
+		"webappOutputDir": "src/test/webapp"
+	},
 
 	"validators": {
 		"UpdaterNameValidator": {

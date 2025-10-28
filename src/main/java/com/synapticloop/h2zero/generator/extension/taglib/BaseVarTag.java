@@ -1,4 +1,4 @@
-package com.synapticloop.h2zero.extension.taglib;
+package com.synapticloop.h2zero.generator.extension.taglib;
 
 /*
  * Copyright (c) 2012-2018 synapticloop.

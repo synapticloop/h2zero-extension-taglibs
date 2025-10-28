@@ -20,7 +20,7 @@ import {database.package}.model.{table.javaClassName};{\n}
 {endif}
 import {database.package}.model.util.Constants;{\n}
 {\n}
-import com.synapticloop.h2zero.extension.taglib.BaseVarTag;{\n}{\n}
+import com.synapticloop.h2zero.generator.extension.taglib.BaseVarTag;{\n}{\n}
 
 @SuppressWarnings("serial"){\n}
 public class FindByPrimaryKeyTag extends BaseVarTag {{{\n}
@@ -36,7 +36,7 @@ public class FindByPrimaryKeyTag extends BaseVarTag {{{\n}
 	{\t}@Override{\n}
 	{\t}public int doStartTag() throws JspException {{{\n}
 		{if !table.isConstant}
-			{\t}{\t}pageContext.setAttribute(var, {table.javaClassName}Finder.findByPrimaryKeySilent(primaryKey));{\n}
+			{\t}{\t}pageContext.setAttribute(var, {table.javaClassName}Finder.findByPrimaryKey(primaryKey).executeSilent());{\n}
 		{else}
 			{\t}{\t}pageContext.setAttribute(var, {table.javaClassName}.ALL_LOOKUP.get(primaryKey));{\n}
 		{endif}

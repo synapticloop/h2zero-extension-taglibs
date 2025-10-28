@@ -19,7 +19,7 @@ import {database.package}.model.util.Constants;{\n}
 
 import {database.package}.finder.{table.javaClassName}{if table.isView}View{endif}Finder;{\n}
 
-import com.synapticloop.h2zero.extension.taglib.BaseVarTag;{\n}{\n}
+import com.synapticloop.h2zero.generator.extension.taglib.BaseVarTag;{\n}{\n}
 
 {\n}
 

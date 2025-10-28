@@ -33,7 +33,8 @@
 
 	{\t}{\t}<attribute>{\n}
 	{\t}{\t}{\t}<description>{\n}
-	{\t}{\t}{\t}{\t}The variable to bind the results to{\n}
+	{\t}{\t}{\t}{\t}The variable to bind the results to, the results will be of type{\n}
+	{\t}{\t}{\t}{\t}table.javaClassName{\n}
 	{\t}{\t}{\t}</description>{\n}
 	{\t}{\t}{\t}<name>var</name>{\n}
 	{\t}{\t}{\t}<required>true</required>{\n}
@@ -70,7 +71,8 @@
 
 	{\t}{\t}<attribute>{\n}
 	{\t}{\t}{\t}<description>{\n}
-	{\t}{\t}{\t}{\t}The variable to bind the results to{\n}
+	{\t}{\t}{\t}{\t}The variable to bind the results to, the results will be of type{\n}
+	{\t}{\t}{\t}{\t}List&lt;{table.javaClassName}&gt;{\n}
 	{\t}{\t}{\t}</description>{\n}
 	{\t}{\t}{\t}<name>var</name>{\n}
 	{\t}{\t}{\t}<required>true</required>{\n}
@@ -134,7 +136,7 @@
 
 		{\t}{\t}<attribute>{\n}
 		{\t}{\t}{\t}<description>{\n}
-		{\t}{\t}{\t}{\t}The variable to bind the results to{\n}
+		{\t}{\t}{\t}{\t}The variable to bind the results to, the variable will be of type:{\n}
 		{\t}{\t}{\t}</description>{\n}
 		{\t}{\t}{\t}<name>var</name>{\n}
 		{\t}{\t}{\t}<required>true</required>{\n}
@@ -162,6 +164,7 @@
 		{\t}{\t}{\t}<rtexprvalue>false</rtexprvalue>{\n}
 		{\t}{\t}</attribute>{\n}
 
+{if !finder.unique}
 		{\t}{\t}<attribute>{\n}
 		{\t}{\t}{\t}<description>{\n}
 		{\t}{\t}{\t}{\t}The limit of the results for the query{\n}
@@ -179,6 +182,7 @@
 		{\t}{\t}{\t}<required>false</required>{\n}
 		{\t}{\t}{\t}<rtexprvalue>true</rtexprvalue>{\n}
 		{\t}{\t}</attribute>{\n}
+{endif}
 
 		{\t}</tag>{\n}
 		{\n}
@@ -347,43 +351,6 @@
 
 	{\t}<tag>{\n}
 	{\t}{\t}<description>{\n}
-	{\t}{\t}{\t}This is an in-built tag for the find by primary key method on the {view.name} table{\n}
-	{\t}{\t}</description>{\n}
-	{\t}{\t}<name>{view.javaClassName}FindByPrimaryKey</name>{\n}
-	{\t}{\t}<tag-class>{database.package}.taglib.{view.javaFieldName}.FindByPrimaryKeyTag</tag-class>{\n}
-	{\t}{\t}<body-content>JSP</body-content>{\n}
-
-	{\t}{\t}<attribute>{\n}
-	{\t}{\t}{\t}<description>{\n}
-	{\t}{\t}{\t}{\t}The variable to bind the results to{\n}
-	{\t}{\t}{\t}</description>{\n}
-	{\t}{\t}{\t}<name>var</name>{\n}
-	{\t}{\t}{\t}<required>true</required>{\n}
-	{\t}{\t}{\t}<rtexprvalue>false</rtexprvalue>{\n}
-	{\t}{\t}</attribute>{\n}
-
-	{\t}{\t}<attribute>{\n}
-	{\t}{\t}{\t}<description>{\n}
-	{\t}{\t}{\t}{\t}The primary key{\n}
-	{\t}{\t}{\t}</description>{\n}
-	{\t}{\t}{\t}<name>primaryKey</name>{\n}
-	{\t}{\t}{\t}<required>true</required>{\n}
-	{\t}{\t}{\t}<rtexprvalue>true</rtexprvalue>{\n}
-	{\t}{\t}</attribute>{\n}
-
-	{\t}{\t}<attribute>{\n}
-	{\t}{\t}{\t}<description>{\n}
-	{\t}{\t}{\t}{\t}Whether to remove the var at the end of the tag{\n}
-	{\t}{\t}{\t}</description>{\n}
-	{\t}{\t}{\t}<name>removeVar</name>{\n}
-	{\t}{\t}{\t}<required>false</required>{\n}
-	{\t}{\t}{\t}<rtexprvalue>false</rtexprvalue>{\n}
-	{\t}{\t}</attribute>{\n}
-
-	{\t}</tag>{\n}{\n}
-
-	{\t}<tag>{\n}
-	{\t}{\t}<description>{\n}
 	{\t}{\t}{\t}generated tag for the find all{\n}
 	{\t}{\t}</description>{\n}
 	{\t}{\t}<name>{view.javaClassName}FindAll</name>{\n}
@@ -392,7 +359,8 @@
 
 	{\t}{\t}<attribute>{\n}
 	{\t}{\t}{\t}<description>{\n}
-	{\t}{\t}{\t}{\t}The variable to bind the results to{\n}
+	{\t}{\t}{\t}{\t}The variable to bind the results to, the results will be of type{\n}
+	{\t}{\t}{\t}{\t}List&lt;{view.javaClassName}&gt;{\n}
 	{\t}{\t}{\t}</description>{\n}
 	{\t}{\t}{\t}<name>var</name>{\n}
 	{\t}{\t}{\t}<required>true</required>{\n}

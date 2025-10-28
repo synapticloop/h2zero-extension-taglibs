@@ -17,7 +17,7 @@ import jakarta.servlet.jsp.tagext.BodyTagSupport;{\n}
 import {database.package}.counter.{table.javaClassName}{if table.isView}View{endif}Counter;{\n}
 import {database.package}.model.util.Constants;{\n}
 {\n}
-import com.synapticloop.h2zero.extension.taglib.BaseVarTag;{\n}{\n}
+import com.synapticloop.h2zero.generator.extension.taglib.BaseVarTag;{\n}{\n}
 
 @SuppressWarnings("serial"){\n}
 public class CountAllTag extends BaseVarTag {{{\n}
@@ -30,7 +30,7 @@ public class CountAllTag extends BaseVarTag {{{\n}
 
 	{\t}@Override{\n}
 	{\t}public int doStartTag() throws JspException {{{\n}
-		{\t}{\t}pageContext.setAttribute(var, {table.javaClassName}{if table.isView}View{endif}Counter.countAllSilent());{\n}
+		{\t}{\t}pageContext.setAttribute(var, {table.javaClassName}{if table.isView}View{endif}Counter.countAll().executeSilent());{\n}
 		{\t}{\t}return(EVAL_BODY_INCLUDE);{\n}
 	}{\n}
 

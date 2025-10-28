@@ -13,6 +13,7 @@
 	<display-name>sample Tag Library</display-name>
 	<tlib-version>1.2</tlib-version>
 	<short-name>sample</short-name>
+	<uri>https://h2zero.synapticloop.com/sample.mysql</uri>
 
 	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -81,7 +82,7 @@
 			</description>
 			<name>limit</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<description>
@@ -89,7 +90,7 @@
 			</description>
 			<name>offset</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
 
@@ -187,7 +188,7 @@
 			</description>
 			<name>limit</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<description>
@@ -195,7 +196,7 @@
 			</description>
 			<name>offset</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
 
@@ -233,7 +234,7 @@
 			</description>
 			<name>limit</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<description>
@@ -241,7 +242,7 @@
 			</description>
 			<name>offset</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
 
@@ -274,7 +275,7 @@
 			</description>
 			<name>limit</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<description>
@@ -282,7 +283,7 @@
 			</description>
 			<name>offset</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
 
@@ -380,7 +381,7 @@
 			</description>
 			<name>limit</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<description>
@@ -388,7 +389,7 @@
 			</description>
 			<name>offset</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
 
@@ -434,7 +435,7 @@
 			</description>
 			<name>limit</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<description>
@@ -442,7 +443,7 @@
 			</description>
 			<name>offset</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
 
@@ -491,7 +492,7 @@
 			</description>
 			<name>limit</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<description>
@@ -499,7 +500,7 @@
 			</description>
 			<name>offset</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
 
@@ -540,7 +541,7 @@
 			</description>
 			<name>limit</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<description>
@@ -548,7 +549,7 @@
 			</description>
 			<name>offset</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
 
@@ -589,7 +590,7 @@
 			</description>
 			<name>limit</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<description>
@@ -597,7 +598,7 @@
 			</description>
 			<name>offset</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
 
@@ -646,7 +647,7 @@
 			</description>
 			<name>limit</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<description>
@@ -654,7 +655,7 @@
 			</description>
 			<name>offset</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
 
@@ -687,7 +688,7 @@
 			</description>
 			<name>limit</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<description>
@@ -695,7 +696,7 @@
 			</description>
 			<name>offset</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
 
@@ -728,7 +729,7 @@
 			</description>
 			<name>limit</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<description>
@@ -736,7 +737,7 @@
 			</description>
 			<name>offset</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
 
@@ -777,7 +778,7 @@
 			</description>
 			<name>limit</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<description>
@@ -785,7 +786,7 @@
 			</description>
 			<name>offset</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
 
@@ -834,7 +835,7 @@
 			</description>
 			<name>limit</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<description>
@@ -842,7 +843,7 @@
 			</description>
 			<name>offset</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
 
@@ -1206,7 +1207,7 @@
 			</description>
 			<name>limit</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<description>
@@ -1214,7 +1215,7 @@
 			</description>
 			<name>offset</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
 
@@ -1268,7 +1269,7 @@
 			</description>
 			<name>limit</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<description>
@@ -1276,7 +1277,7 @@
 			</description>
 			<name>offset</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
 
@@ -1374,7 +1375,7 @@
 			</description>
 			<name>limit</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<description>
@@ -1382,7 +1383,7 @@
 			</description>
 			<name>offset</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
 
@@ -1418,39 +1419,6 @@
 	  The tag library definitions for the user_user_type table
 
 	  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-	<tag>
-		<description>
-			This is an in-built tag for the find by primary key method on the user_user_type table
-		</description>
-		<name>UserUserTypeFindByPrimaryKey</name>
-		<tag-class>synapticloop.sample.h2zero.mysql.taglib.userUserType.FindByPrimaryKeyTag</tag-class>
-		<body-content>JSP</body-content>
-		<attribute>
-			<description>
-				The variable to bind the results to
-			</description>
-			<name>var</name>
-			<required>true</required>
-			<rtexprvalue>false</rtexprvalue>
-		</attribute>
-		<attribute>
-			<description>
-				The primary key
-			</description>
-			<name>primaryKey</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		<attribute>
-			<description>
-				Whether to remove the var at the end of the tag
-			</description>
-			<name>removeVar</name>
-			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
-		</attribute>
-	</tag>
-
 	<tag>
 		<description>
 			generated tag for the find all

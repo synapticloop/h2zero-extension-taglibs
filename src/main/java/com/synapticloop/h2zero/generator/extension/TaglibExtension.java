@@ -1,4 +1,4 @@
-package com.synapticloop.h2zero.extension;
+package com.synapticloop.h2zero.generator.extension;
 
 /*
  * Copyright (c) 2018 synapticloop.
@@ -25,15 +25,15 @@ import java.util.Map;
 
 import org.json.JSONObject;
 
-import com.synapticloop.h2zero.extension.Extension;
-import com.synapticloop.h2zero.model.Counter;
-import com.synapticloop.h2zero.model.Database;
-import com.synapticloop.h2zero.model.Finder;
-import com.synapticloop.h2zero.model.Options;
-import com.synapticloop.h2zero.model.Question;
-import com.synapticloop.h2zero.model.Table;
-import com.synapticloop.h2zero.model.View;
-import com.synapticloop.h2zero.validator.BaseValidator;
+import com.synapticloop.h2zero.generator.extension.Extension;
+import com.synapticloop.h2zero.generator.model.Counter;
+import com.synapticloop.h2zero.generator.model.Database;
+import com.synapticloop.h2zero.generator.model.Finder;
+import com.synapticloop.h2zero.generator.model.Options;
+import com.synapticloop.h2zero.generator.model.Question;
+import com.synapticloop.h2zero.generator.model.Table;
+import com.synapticloop.h2zero.generator.model.View;
+import com.synapticloop.h2zero.generator.validator.BaseValidator;
 import com.synapticloop.templar.Parser;
 import com.synapticloop.templar.exception.ParseException;
 import com.synapticloop.templar.exception.RenderException;
@@ -133,6 +133,8 @@ public class TaglibExtension extends Extension {
 			// hack for finder taglibs for views - should be split out
 			templarContext.add("table", view);
 
+			logInfo("Generating for view '" + view.getName() + "'.");
+
 			List<Finder> finders = view.getFinders();
 			Iterator<Finder> finderIterator = finders.iterator();
 
@@ -143,13 +145,15 @@ public class TaglibExtension extends Extension {
 				String pathname = outFile.getAbsolutePath() + options.getOutputCode() + database.getPackagePath() + "/taglib/" + view.getJavaFieldName() + "/" + finder.getTagName() + "Tag.java";
 				renderToFile(templarContext, javaCreateTaglibFinderParser, pathname, verbose);
 
-				pathname = outFile.getAbsolutePath() + options.getOutputCode() + database.getPackagePath() + "/taglib/" + view.getJavaFieldName() + "/FindAllTag.java";
-				renderToFile(templarContext, javaCreateTaglibFinderFindAllParser, pathname, verbose);
-
-				pathname = outFile.getAbsolutePath() + options.getOutputCode() + database.getPackagePath() + "/taglib/" + view.getJavaFieldName() + "/CountAllTag.java";
-				renderToFile(templarContext, javaCreateTaglibCounterCountAllParser, pathname, verbose);
-
 			}
+
+			String pathname = outFile.getAbsolutePath() + options.getOutputCode() + database.getPackagePath() + "/taglib/" + view.getJavaFieldName() + "/FindAllTag.java";
+			renderToFile(templarContext, javaCreateTaglibFinderFindAllParser, pathname, verbose);
+
+			pathname = outFile.getAbsolutePath() + options.getOutputCode() + database.getPackagePath() + "/taglib/" + view.getJavaFieldName() + "/CountAllTag.java";
+			renderToFile(templarContext, javaCreateTaglibCounterCountAllParser, pathname, verbose);
+
+
 		}
 
 

@@ -1,6 +1,8 @@
  <a name="#documentr_top"></a>
 
-> **This project requires JVM version of at least 1.7**
+<
+
+> **This project requires JVM version of at least 17**
 
 
 

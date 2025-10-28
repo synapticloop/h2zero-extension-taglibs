@@ -28,7 +28,7 @@ import jakarta.servlet.jsp.tagext.BodyTagSupport;{\n}
 
 import {database.package}.model.util.Constants;{\n}
 {\n}
-import com.synapticloop.h2zero.extension.taglib.BaseVarTag;{\n}{\n}
+import com.synapticloop.h2zero.generator.extension.taglib.BaseVarTag;{\n}{\n}
 
 @SuppressWarnings("serial"){\n}
 public class FindAllTag extends BaseVarTag {{{\n}
@@ -44,9 +44,9 @@ public class FindAllTag extends BaseVarTag {{{\n}
 	{\t}public int doStartTag() throws JspException {{{\n}
 		{if !table.isConstant}
 			{\t}{\t}if(limit == null) {{{\n}
-			{\t}{\t}{\t}pageContext.setAttribute(var, {table.javaClassName}{if table.isView}View{endif}Finder.findAllSilent());{\n}
+			{\t}{\t}{\t}pageContext.setAttribute(var, {table.javaClassName}{if table.isView}View{endif}Finder.findAll().executeSilent());{\n}
 			{\t}{\t}} else {{{\n}
-			{\t}{\t}{\t}pageContext.setAttribute(var, {table.javaClassName}{if table.isView}View{endif}Finder.findAllSilent(limit, offset));{\n}
+			{\t}{\t}{\t}pageContext.setAttribute(var, {table.javaClassName}{if table.isView}View{endif}Finder.findAll().withLimit(limit).withOffset(offset).executeSilent());{\n}
 			{\t}{\t}}{\n}
 		{else}
 			{\t}{\t}pageContext.setAttribute(var, {table.javaClassName}.ALL);{\n}

@@ -4,7 +4,9 @@ package synapticloop.sample.h2zero.mysql.taglib.userTitle;
 //    with the use of synapticloop templar templating language
 //          (java-create-taglib-counter-count-all.templar)
 
-import javax.servlet.jsp.JspException;
+import jakarta.servlet.jsp.JspException;
+import jakarta.servlet.jsp.PageContext;
+import jakarta.servlet.jsp.tagext.BodyTagSupport;
 
 
 import org.slf4j.Logger;
@@ -14,7 +16,7 @@ import org.slf4j.LoggerFactory;
 import synapticloop.sample.h2zero.mysql.counter.UserTitleCounter;
 import synapticloop.sample.h2zero.mysql.model.util.Constants;
 
-import com.synapticloop.h2zero.extension.taglib.BaseVarTag;
+import com.synapticloop.h2zero.generator.extension.taglib.BaseVarTag;
 
 @SuppressWarnings("serial")
 public class CountAllTag extends BaseVarTag {
@@ -29,7 +31,7 @@ public class CountAllTag extends BaseVarTag {
 
 	@Override
 	public int doStartTag() throws JspException {
-		pageContext.setAttribute(var, UserTitleCounter.countAllSilent());
+		pageContext.setAttribute(var, UserTitleCounter.countAll().executeSilent());
 		return(EVAL_BODY_INCLUDE);
 }
 }

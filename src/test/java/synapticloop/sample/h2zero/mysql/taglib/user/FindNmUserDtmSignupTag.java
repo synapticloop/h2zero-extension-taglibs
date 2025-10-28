@@ -4,7 +4,13 @@ package synapticloop.sample.h2zero.mysql.taglib.user;
 //    with the use of synapticloop templar templating language
 //           (java-create-taglib-finder.templar)
 
-import javax.servlet.jsp.JspException;
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.List;
+
+import jakarta.servlet.jsp.JspException;
+import jakarta.servlet.jsp.PageContext;
+import jakarta.servlet.jsp.tagext.BodyTagSupport;
 
 
 import org.slf4j.Logger;
@@ -12,8 +18,9 @@ import org.slf4j.LoggerFactory;
 
 
 import synapticloop.sample.h2zero.mysql.model.util.Constants;
+import synapticloop.sample.h2zero.mysql.model.User;
 import synapticloop.sample.h2zero.mysql.finder.UserFinder;
-import com.synapticloop.h2zero.extension.taglib.BaseVarTag;
+import com.synapticloop.h2zero.generator.extension.taglib.BaseVarTag;
 
 
 @SuppressWarnings("serial")
@@ -29,9 +36,9 @@ public class FindNmUserDtmSignupTag extends BaseVarTag {
 	@Override
 	public int doStartTag() throws JspException {
 		if(limit != null) {
-			pageContext.setAttribute(var, UserFinder.findNmUserDtmSignupSilent(limit, offset));
+			pageContext.setAttribute(var, UserFinder.findNmUserDtmSignup().withLimit(limit).withOffset(offset).executeSilent());
 		} else {
-			pageContext.setAttribute(var, UserFinder.findNmUserDtmSignupSilent());
+			pageContext.setAttribute(var, UserFinder.findNmUserDtmSignup().executeSilent());
 		}
 		return(EVAL_BODY_INCLUDE);
 	}
